@@ -1,0 +1,21 @@
+mrbsizeR 1.1.2 (Release date: ???)
+==============
+
+Changes:
+
+* modifications for pkgdown website
+
+mrbsizeR 1.1.1 (Release date: 2018-05-02)
+==============
+
+Changes:
+
+* adressing Solaris compiler error in rcpp_dctmatrix.cpp
+
+mrbsizeR 1.1.0 (Release date: 2018-04-29)
+==============
+
+Changes:
+
+* new maintainer Roman Flury
+* dctmmatrix and eigenLaplace via rcpp
