@@ -13,7 +13,6 @@ header-includes:
    - \usepackage{bm}
    - \usepackage{setspace}\onehalfspacing
    - \usepackage[labelfont=bf]{caption}
-   # - \usepackage{gensymb}
    - \setcitestyle{round}
    - \usepackage{color}
    - \definecolor{Red}{rgb}{0.7,0,0}
