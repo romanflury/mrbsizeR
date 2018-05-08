@@ -19,27 +19,27 @@ probabilities of all differences of smooths.}
 \item{plotWhich}{Which probabilities shall be plotted? \code{HPW}, \code{PW}
 or \code{Both}?}
 
-\item{color}{Vector of length 3 containing the colors to be used in the
-credibility maps. The first color represents the credibly negative pixels,
+\item{color}{Vector of length 3 containing the colors to be used in the 
+credibility maps. The first color represents the credibly negative pixels, 
 the second color the pixels that are not credibly different from zero
 and the third color the credibly positive pixels.}
 
-\item{turnOut}{Logical. Should the output images be turned 90 degrees
+\item{turnOut}{Logical. Should the output images be turned 90 degrees 
 counter-clockwise?}
 
-\item{title}{Vector containing one string per plot. The required
-number of titles is equal to \code{length(mrbOut$hpout)}. If no \code{title}
+\item{title}{Vector containing one string per plot. The required 
+number of titles is equal to \code{length(mrbOut$hpout)}. If no \code{title} 
 is passed, defaults are used.}
 
 \item{...}{Further graphical parameters can be passed.}
 }
 \value{
 Plots of pointwise and/or highest pointwise probabilities for all
-differences of smooths are created.
+    differences of smooths are created.
 }
 \description{
-Maps with pointwise (PW) probabilities and/or highest pointwise (HPW)
-probabilities of all differences of smooths at neighboring scales are plotted.
+Maps with pointwise (PW) probabilities and/or highest pointwise (HPW) 
+probabilities of all differences of smooths at neighboring scales are plotted. 
 Continental lines are added.
 }
 \details{

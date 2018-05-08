@@ -15,12 +15,12 @@
 Plot of \eqn{G} on a grid.
 }
 \description{
-The objective function \eqn{G} is plotted on a grid. The minimum is
+The objective function \eqn{G} is plotted on a grid. The minimum is 
 indicated with a white point.
 }
 \details{
 When minimizing over 2 \eqn{\lambda}'s, one plot is generated: (\eqn{\lambda_2} vs \eqn{\lambda_3}).
-With 3 \eqn{\lambda}'s, 3 plots are generated: \eqn{\lambda_2} vs. \eqn{\lambda_3},
+With 3 \eqn{\lambda}'s, 3 plots are generated: \eqn{\lambda_2} vs. \eqn{\lambda_3}, 
 \eqn{\lambda_2} vs. \eqn{\lambda_4} and \eqn{\lambda_3} vs. \eqn{\lambda_4}.
 }
 \examples{

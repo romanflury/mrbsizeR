@@ -13,11 +13,11 @@
 \item{color.pallet}{The color pallet to be used for plotting scale-dependent
 features.}
 
-\item{turnOut}{Logical. Should the output images be turned 90 degrees
+\item{turnOut}{Logical. Should the output images be turned 90 degrees 
 counter-clockwise?}
 
-\item{title}{Vector containing one string per plot. The required
-number of titles is equal to \code{length(mrbOut$smMean)}. If no \code{title}
+\item{title}{Vector containing one string per plot. The required 
+number of titles is equal to \code{length(mrbOut$smMean)}. If no \code{title} 
 is passed, defaults are used.}
 
 \item{aspRatio}{Adjust the aspect ratio of the plots. The default \code{aspRatio = 1}

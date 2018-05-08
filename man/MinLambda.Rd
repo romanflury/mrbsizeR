@@ -30,31 +30,31 @@ A list with 3 objects:
 
 \code{lambda} Evaluated smoothing parameters \eqn{\lambda}.
 
-\code{minind} Index of minimal \eqn{\lambda}'s. \code{lambda}\link{\code{minind}}
-gives the minimal values.
+\code{minind} Index of minimal \eqn{\lambda}'s. \code{lambda}[\code{minind}] 
+    gives the minimal values.
 }
 \description{
-Numerical optimization of an objective function \eqn{G} is carried out to find
-appropriate signal-dependent smoothing levels (\eqn{\lambda}'s). This is easier
+Numerical optimization of an objective function \eqn{G} is carried out to find 
+appropriate signal-dependent smoothing levels (\eqn{\lambda}'s). This is easier 
 than visual inspection via the signal-dependent tapering function in \code{\link{TaperingPlot}}.
 }
 \details{
-As signal-dependent tapering functions are quiet irregular, it is hard to
+As signal-dependent tapering functions are quiet irregular, it is hard to 
 find appropriate smoothing values only by visual inspection of the tapering
-function plot. A more formal approach is the numerical optimization of an
+function plot. A more formal approach is the numerical optimization of an 
 objective function.
 
-Optimization can be carried out with 2 or 3 smoothing parameters. As the
+Optimization can be carried out with 2 or 3 smoothing parameters. As the 
 smoothing parameters 0 and \eqn{\infty} are always added, this results
 in a mrbsizeR analysis with 4 or 5 smoothing parameters.
 
-Sometimes, not all features of the input object can be extracted using the
+Sometimes, not all features of the input object can be extracted using the 
 smoothing levels proposed by \code{MinLambda}. It might then be necessary to
 include additional smoothing levels.
 
-\code{\link{plot.minLambda}} creates a plot of the objective function \eqn{G}
-on a grid. The minimum is indicated with a white point. The minimum values of
-the \eqn{\lambda}'s can be extracted from the output of \code{MinLambda},
+\code{\link{plot.minLambda}} creates a plot of the objective function \eqn{G} 
+on a grid. The minimum is indicated with a white point. The minimum values of 
+the \eqn{\lambda}'s can be extracted from the output of \code{MinLambda}, 
 see examples.
 }
 \examples{

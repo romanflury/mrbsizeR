@@ -6,85 +6,85 @@
 \alias{mrbsizeR-package}
 \title{mrbsizeR: Scale space multiresolution analysis in R.}
 \description{
-\code{mrbsizeR} contains a method for the scale space multiresolution analysis of
-spatial fields and images to capture scale-dependent features. The name is
+\code{mrbsizeR} contains a method for the scale space multiresolution analysis of 
+spatial fields and images to capture scale-dependent features. The name is 
 an abbreviation for \strong{M}ulti\strong{R}esolution \strong{B}ayesian \strong{SI}gnificant
-\strong{ZE}ro crossings of derivatives in \strong{R} and the method combines the
+\strong{ZE}ro crossings of derivatives in \strong{R} and the method combines the 
 concept of statistical scale space analysis with a Bayesian SiZer method.
 }
 \details{
-The \code{mrbsizeR} analysis can be applied to data on a regular grid and to spherical
-data. For data on a grid, the scale space multiresolution analysis has three steps:
+The \code{mrbsizeR} analysis can be applied to data on a regular grid and to spherical 
+data. For data on a grid, the scale space multiresolution analysis has three steps: 
 \enumerate{
-\item Bayesian signal reconstruction.
-\item Using differences of smooths, scale-dependent features of the reconstructed signal are found.
-\item Posterior credibility analysis of the differences of smooths created.
+    \item Bayesian signal reconstruction. 
+    \item Using differences of smooths, scale-dependent features of the reconstructed signal are found.
+    \item Posterior credibility analysis of the differences of smooths created. 
 }
 
-In a first step, Bayesian signal reconstruction is used to extract an underlying
+In a first step, Bayesian signal reconstruction is used to extract an underlying 
 signal from a potentially noisy observation. Samples of the resulting posterior
-can be generated and used for the analysis. For finding features on different scales,
-differences of smooths at neighboring scales are used. This is an important
-distinction to other scale space methods (which usually use a wide range of smoothing
-levels without taking differences) and tries to separate the features into
-distinct scale categories more aggressively. After a successful extraction
+can be generated and used for the analysis. For finding features on different scales, 
+differences of smooths at neighboring scales are used. This is an important 
+distinction to other scale space methods (which usually use a wide range of smoothing 
+levels without taking differences) and tries to separate the features into 
+distinct scale categories more aggressively. After a successful extraction 
 of the scale-different features, posterior credibility analysis is necessary
 to assess whether the features found are ``really there'' or if they are artifacts
 of random sampling.
 
 For spherical data, no Bayesian signal reconstruction is implemented in \code{mrbsizer}.
-Data samples therefore need to be available beforehand. The analysis procedure
-can therefore be summarized in two steps:
+Data samples therefore need to be available beforehand. The analysis procedure 
+can therefore be summarized in two steps: 
 \enumerate{
-\item Using differences of smooths, scale-dependent features of the reconstructed signal are found.
-\item Posterior credibility analysis of the differences of smooths created.
+    \item Using differences of smooths, scale-dependent features of the reconstructed signal are found.
+    \item Posterior credibility analysis of the differences of smooths created. 
 }
 
-This method has first been proposed by Holmstrom, Pasanen, Furrer, Sain (2011),
+This method has first been proposed by Holmstrom, Pasanen, Furrer, Sain (2011), 
 see also \cr http://cc.oulu.fi/~lpasanen/MRBSiZer/.
 
 \strong{Major Functions}
 \itemize{
-\item \code{\link{TaperingPlot}} Graphical estimation of useful smoothing
-levels. Can be used signal-independent and signal-dependent.
-\item \code{\link{MinLambda}} Numerical estimation of useful smoothing levels.
-Takes the underlying signal into account. \code{\link{plot.minLambda}} can
-be used for plotting the result.
-\item \code{\link{rmvtDCT}} Creates samples on a regular grid from a
-multivariate \eqn{t_{\nu}}-distribution using a discrete cosine transform (DCT).
-\item \code{\link{mrbsizeRgrid}} Interface of the mrbsizeR method for data on a
-regular grid. Differences of smooths at neighboring scales are created
-and posterior credibility analysis is conducted. The results can be
-visualized using \code{\link{plot.smMeanGrid}},\code{\link{plot.HPWmapGrid}}
-and \code{\link{plot.CImapGrid}}.
-\item \code{\link{mrbsizeRsphere}} Interface of the mrbsizeR method for data on a
-sphere. Differences of smooths at neighboring scales are created
-and posterior credibility analysis is conducted. The results can be
-visualized using \code{\link{plot.smMeanSphere}},\code{\link{plot.HPWmapSphere}}
-and \cr \code{\link{plot.CImapSphere}}.
-For data on a sphere, no Bayesian signal reconstruction is implemented.
-Samples have to be provided instead.
+  \item \code{\link{TaperingPlot}} Graphical estimation of useful smoothing 
+      levels. Can be used signal-independent and signal-dependent.
+  \item \code{\link{MinLambda}} Numerical estimation of useful smoothing levels.
+      Takes the underlying signal into account. \code{\link{plot.minLambda}} can
+      be used for plotting the result. 
+  \item \code{\link{rmvtDCT}} Creates samples on a regular grid from a 
+      multivariate \eqn{t_{\nu}}-distribution using a discrete cosine transform (DCT).
+  \item \code{\link{mrbsizeRgrid}} Interface of the mrbsizeR method for data on a 
+      regular grid. Differences of smooths at neighboring scales are created 
+      and posterior credibility analysis is conducted. The results can be 
+      visualized using \code{\link{plot.smMeanGrid}},\code{\link{plot.HPWmapGrid}} 
+      and \code{\link{plot.CImapGrid}}.
+  \item \code{\link{mrbsizeRsphere}} Interface of the mrbsizeR method for data on a 
+      sphere. Differences of smooths at neighboring scales are created 
+      and posterior credibility analysis is conducted. The results can be 
+      visualized using \code{\link{plot.smMeanSphere}},\code{\link{plot.HPWmapSphere}} 
+      and \cr \code{\link{plot.CImapSphere}}. 
+      For data on a sphere, no Bayesian signal reconstruction is implemented. 
+      Samples have to be provided instead. 
 }
 
 \strong{Getting Started}
 
-The vignette for this package offers an extensive overview of the functionality
+The vignette for this package offers an extensive overview of the functionality 
 and the usage of \code{mrbsizeR}.
 
 \strong{References}
 
 \itemize{
-\item Holmstrom, L. and Pasanen, L. (2011). MRBSiZer. http://cc.oulu.fi/~lpasanen/MRBSiZer/.
-Accessed: 2017-03-04.
-\item Holmstrom, L., Pasanen, L., Furrer, R., and Sain, S. R. (2011).
-Scale space multiresolution analysis of random signals.
-Computational Statistics and Data Analysis, 55, 2840-2855.
-\url{DOI:10.1016/j.csda.2011.04.011}.
-\item Holmstrom, L. and Pasanen, L. (2016). Statistical scale space methods.
-International Statistical Review. \url{DOI:10.1111/insr.12155}.
+   \item Holmstrom, L. and Pasanen, L. (2011). MRBSiZer. http://cc.oulu.fi/~lpasanen/MRBSiZer/. 
+   Accessed: 2017-03-04.
+   \item Holmstrom, L., Pasanen, L., Furrer, R., and Sain, S. R. (2011). 
+   Scale space multiresolution analysis of random signals. 
+   Computational Statistics and Data Analysis, 55, 2840-2855.
+   <DOI:10.1016/j.csda.2011.04.011>.
+   \item Holmstrom, L. and Pasanen, L. (2016). Statistical scale space methods. 
+   International Statistical Review. <DOI:10.1111/insr.12155>.
 }
 
-\strong{DISCLAIMER:} The author can not guarantee the correctness of any
+\strong{DISCLAIMER:} The author can not guarantee the correctness of any 
 function or program in this package.
 }
 \examples{

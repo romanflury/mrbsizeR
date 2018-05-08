@@ -17,7 +17,7 @@ tridiag(mainDiag, upperDiag, lowerDiag)
 Tridiagonal matrix.
 }
 \description{
-Generate a tridiagonal matrix with \code{upperDiag} as superdiagonal,
+Generate a tridiagonal matrix with \code{upperDiag} as superdiagonal, 
 \code{lowerDiag} as subdiagonal and \code{mainDiag} as diagonal.
 }
 \examples{

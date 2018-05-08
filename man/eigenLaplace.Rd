@@ -13,7 +13,7 @@ eigenLaplace(mm, nn)
 }
 \value{
 A row vector containing the eigenvalues of the discrete
-laplace matrix.
+    laplace matrix.
 }
 \description{
 The eigenvalues of a discrete Laplace matrix with dimension (\code{mm}, \code{nn}) are

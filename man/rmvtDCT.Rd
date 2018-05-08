@@ -11,7 +11,7 @@ rmvtDCT(object, lambda, sigma, nu0, ns)
 
 \item{lambda}{Scaling parameter (\eqn{\lambda}) of the normal-inverse-chi-squared-prior.}
 
-\item{sigma}{Square root of the \eqn{\sigma_{0}^{2}} parameter of the
+\item{sigma}{Square root of the \eqn{\sigma_{0}^{2}} parameter of the 
 normal-inverse-chi-squared-prior.}
 
 \item{nu0}{Degrees of freedom (\eqn{\nu_{0}}) of the normal-inverse-chi-square-prior.}
@@ -34,8 +34,8 @@ An eigenvalue decomposition is used for sampling. To speed up computations,
 a 2D discrete cosine transform (DCT) has been implemented, see \code{\link{dctMatrix}}.
 The output is a list containing
 \enumerate{
-\item Samples of the marginal posterior of the input as column vectors.
-\item The mean of the marginal posterior of the input as a vector.
+    \item Samples of the marginal posterior of the input as column vectors.
+    \item The mean of the marginal posterior of the input as a vector.
 }
 }
 \examples{

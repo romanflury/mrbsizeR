@@ -15,23 +15,23 @@ differences of smooths.}
 
 \item{lat}{Vector containing the latitudes of the data points.}
 
-\item{color}{Vector of length 3 containing the colors to be used in the
-credibility maps. The first color represents the credibly negative pixels,
+\item{color}{Vector of length 3 containing the colors to be used in the 
+credibility maps. The first color represents the credibly negative pixels, 
 the second color the pixels that are not credibly different from zero
 and the third color the credibly positive pixels.}
 
-\item{turnOut}{Logical. Should the output images be turned 90 degrees
+\item{turnOut}{Logical. Should the output images be turned 90 degrees 
 counter-clockwise?}
 
-\item{title}{Vector containing one string per plot. The required
-number of titles is equal to \code{length(mrbOut$ciout)}. If no \code{title}
+\item{title}{Vector containing one string per plot. The required 
+number of titles is equal to \code{length(mrbOut$ciout)}. If no \code{title} 
 is passed, defaults are used.}
 
 \item{...}{Further graphical parameters can be passed.}
 }
 \value{
 Plots of simultaneous credible intervals for all differences of
-smooths are created.
+    smooths are created.
 }
 \description{
 Maps with simultaneous credible intervals for all differences of smooths
@@ -45,7 +45,7 @@ The default colors of the maps have the following meaning:
 \item \strong{Grey}: Pixels that are not credibly different from zero.
 }
 \code{x} corresponds to the \code{ciout}-part of the
-output of \code{\link{mrbsizeRsphere}}.
+    output of \code{\link{mrbsizeRsphere}}.
 }
 \examples{
 # Artificial spherical sample data

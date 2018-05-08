@@ -19,7 +19,7 @@ TaperingPlot(lambdaSmoother, mm, nn, Xmu, ...)
 }
 \value{
 Plots of the tapering functions for all differences of smooths
-at neighboring scales are created.
+    at neighboring scales are created.
 }
 \description{
 Tapering functions corresponding to the smoothing levels in \code{lambdaSmoother}
@@ -42,9 +42,9 @@ functions for finding appropriate smoothing levels is a good starting point.
 Better results could be obtained if the structure of the posterior mean of
 the input is also taken into account. If the posterior mean is available,
 it can be added with the argument \code{Xmu} and moving averages of the absolute
-values of the signal-dependent tapering functions are drawn. \code{\link{MinLambda}}
-offers a more formal approach of optimizing the disjointedness of the tapering
-functions and can help finding appropriate smoothing levels when the input
+values of the signal-dependent tapering functions are drawn. \code{\link{MinLambda}} 
+offers a more formal approach of optimizing the disjointedness of the tapering 
+functions and can help finding appropriate smoothing levels when the input 
 signal is taken into account.
 }
 \examples{

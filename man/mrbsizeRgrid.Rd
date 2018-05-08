@@ -18,7 +18,7 @@ mrbsizeRgrid(posteriorFile, mm, nn, lambdaSmoother, prob = 0.95,
 
 \item{prob}{Credibility level for the posterior credibility analysis.}
 
-\item{smoothOut}{Should the differences of smooths at neighboring scales be
+\item{smoothOut}{Should the differences of smooths at neighboring scales be 
 returned as output (FALSE by default)?}
 }
 \value{
@@ -26,35 +26,35 @@ A list containing the following sublists:
 
 \code{smMean} Posterior mean of all differences of smooths created.
 
-\code{hpout} Pointwise (PW) and highest pointwise (HPW) probabilities
-of all differences of smooths created.
+\code{hpout} Pointwise (PW) and highest pointwise (HPW) probabilities 
+    of all differences of smooths created.
 
 \code{ciout} Simultaneous credible intervals (CI) of all differences of
-smooths created.
+    smooths created.
 
-\code{smoothSamples} Samples of differences of smooths at neighboring scales,
-as column vectors.
+\code{smoothSamples} Samples of differences of smooths at neighboring scales, 
+    as column vectors.
 }
 \description{
 \code{mrbsizeRgrid} is the interface of the scale space multiresolution method
-for data on a regular grid. Here, the differences of smooths as well as the posterior
+for data on a regular grid. Here, the differences of smooths as well as the posterior 
 credibility analysis are computed. The output can be analyzed with the plotting
-functions \code{\link{plot.smMeanGrid}}, \code{\link{plot.CImapGrid}} and
+functions \code{\link{plot.smMeanGrid}}, \code{\link{plot.CImapGrid}} and 
 \code{\link{plot.HPWmapGrid}}.
 }
 \details{
 \code{mrbsizeRgrid} conducts two steps of the scale space multiresolution analysis:
 \enumerate{
-\item Extraction of scale-dependent features from the reconstructed signal.
-This is done by smoothing at different smoothing levels and taking the
-difference of smooths at neighboring scales.
-\item Posterior credibility analysis of the differences of smooths created.
-Three different methods are applied: Pointwise probabilities (see \code{\link{HPWmap}}),
-highest pointwise probabilities (see \code{\link{HPWmap}}) and simultaneous
-credible intervals (see \code{\link{CImap}}).
+    \item Extraction of scale-dependent features from the reconstructed signal.
+        This is done by smoothing at different smoothing levels and taking the
+        difference of smooths at neighboring scales.
+    \item Posterior credibility analysis of the differences of smooths created.
+        Three different methods are applied: Pointwise probabilities (see \code{\link{HPWmap}}),
+        highest pointwise probabilities (see \code{\link{HPWmap}}) and simultaneous 
+        credible intervals (see \code{\link{CImap}}).
 }
 The signal can be reconstructed using the build-in multivariate t-distribution
-sampling \code{\link{rmvtDCT}}. It is also possible to provide samples
+sampling \code{\link{rmvtDCT}}. It is also possible to provide samples 
 generated with other methods, see the parameter \code{posteriorFile} and the
 examples.
 

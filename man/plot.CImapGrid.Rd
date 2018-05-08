@@ -11,16 +11,16 @@
 \item{x}{List containing the simultaneous credible intervals for all
 differences of smooths.}
 
-\item{color}{Vector of length 3 containing the colors to be used in the
-credibility maps. The first color represents the credibly negative pixels,
+\item{color}{Vector of length 3 containing the colors to be used in the 
+credibility maps. The first color represents the credibly negative pixels, 
 the second color the pixels that are not credibly different from zero
 and the third color the credibly positive pixels.}
 
-\item{turnOut}{Logical. Should the output images be turned 90 degrees
+\item{turnOut}{Logical. Should the output images be turned 90 degrees 
 counter-clockwise?}
 
-\item{title}{Vector containing one string per plot. The required
-number of titles is equal to \code{length(mrbOut$ciout)}. If no \code{title}
+\item{title}{Vector containing one string per plot. The required 
+number of titles is equal to \code{length(mrbOut$ciout)}. If no \code{title} 
 is passed, defaults are used.}
 
 \item{aspRatio}{Adjust the aspect ratio of the plots. The default \code{aspRatio = 1}
@@ -30,7 +30,7 @@ produces square plots.}
 }
 \value{
 Plots of simultaneous credible intervals for all differences of
-smooths are created.
+    smooths are created.
 }
 \description{
 Maps with simultaneous credible intervals for all differences of smooths
@@ -43,7 +43,7 @@ The default colors of the maps have the following meaning:
 \item \strong{Red}: Credibly negative pixels.
 \item \strong{Grey}: Pixels that are not credibly different from zero.
 }
-\code{x} corresponds to the \code{ciout}-part of the output
+\code{x} corresponds to the \code{ciout}-part of the output 
 of \code{\link{mrbsizeRgrid}}.
 }
 \examples{

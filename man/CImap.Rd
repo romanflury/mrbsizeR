@@ -13,12 +13,12 @@ CImap(smoothVec, mm, nn, prob = 0.95)
 
 \item{nn}{Number of columns of the original input object.}
 
-\item{prob}{Credibility level for the posterior credibility analysis.
+\item{prob}{Credibility level for the posterior credibility analysis. 
 By default \code{prob = 0.95}.}
 }
 \value{
 An array with simultaneous credible intervals \code{VmapCI} and
-the dimensions of the original input object, \code{mm} and \code{nn}.
+    the dimensions of the original input object, \code{mm} and \code{nn}.
 }
 \description{
 Simultaneous credible intervals for all differences of smooths at neighboring
@@ -26,7 +26,7 @@ scales \eqn{z_{i}} are computed.
 }
 \details{
 \code{CImap} is an internal function of \code{\link{mrbsizeRgrid}} and is usually
-not used independently. The output can be analyzed with the plotting function
+not used independently. The output can be analyzed with the plotting function 
 \code{\link{plot.CImapGrid}}.
 }
 \examples{

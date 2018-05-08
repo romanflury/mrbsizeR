@@ -17,7 +17,7 @@ The discrete Fourier transform (DFT) matrix for a given dimension n is
 calculated.
 }
 \details{
-The DFT matrix can be used for computing the discrete Fourier transform of
+The DFT matrix can be used for computing the discrete Fourier transform of 
 a matrix or vector. \code{dftMatrix(n) \%*\% testMatrix} is the same as
 \code{apply(testMatrix, MARGIN = 2, FUN = fft)}.
 }

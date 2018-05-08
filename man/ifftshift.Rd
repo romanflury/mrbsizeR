@@ -9,19 +9,19 @@ ifftshift(inputMatrix, dimension = -1)
 \arguments{
 \item{inputMatrix}{Matrix to be swapped.}
 
-\item{dimension}{Which swap should be performed?
+\item{dimension}{Which swap should be performed? 
 \itemize{
-\item \code{1}: swap halves along the rows.
-\item \code{2}: swap halves along the columns.
-\item \code{-1}: swap first quadrant with third and second quadrant with fourth.
+    \item \code{1}: swap halves along the rows.
+    \item \code{2}: swap halves along the columns. 
+    \item \code{-1}: swap first quadrant with third and second quadrant with fourth. 
 }}
 }
 \value{
 Swapped matrix.
 }
 \description{
-\code{ifftshift} is an R equivalent to the Matlab function \code{ifftshift}
-applied on matrices. For more information about \code{ifftshift} see
+\code{ifftshift} is an R equivalent to the Matlab function \code{ifftshift} 
+applied on matrices. For more information about \code{ifftshift} see 
 the Matlab documentation.
 }
 \details{

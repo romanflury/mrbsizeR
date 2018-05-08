@@ -9,25 +9,25 @@ fftshift(inputMatrix, dimension = -1)
 \arguments{
 \item{inputMatrix}{Matrix to be swapped.}
 
-\item{dimension}{Which swap should be performed?
+\item{dimension}{Which swap should be performed? 
 \itemize{
-\item \code{1}: swap halves along the rows.
-\item \code{2}: swap halves along the columns.
-\item \code{-1}: swap first quadrant with third and second quadrant with fourth.
+    \item \code{1}: swap halves along the rows.
+    \item \code{2}: swap halves along the columns. 
+    \item \code{-1}: swap first quadrant with third and second quadrant with fourth. 
 }}
 }
 \value{
 Swapped matrix.
 }
 \description{
-\code{fftshift} is an R equivalent to the Matlab function \code{fftshift}
-applied on matrices. For more information about \code{fftshift} see
+\code{fftshift} is an R equivalent to the Matlab function \code{fftshift} 
+applied on matrices. For more information about \code{fftshift} see 
 the Matlab documentation.
 }
 \details{
-It is possible to swap the halves or the quadrants of the input matrix.
-Halves can be swapped along the rows (\code{dimension = 1}) or along the
-columns (\code{dimension = 2}). When swapping the quadrants, \code{fftshift}
+It is possible to swap the halves or the quadrants of the input matrix. 
+Halves can be swapped along the rows (\code{dimension = 1}) or along the 
+columns (\code{dimension = 2}). When swapping the quadrants, \code{fftshift} 
 swaps the first quadrant with the third and the second quadrant with the fourth
 (\code{dimension = -1}).
 }
