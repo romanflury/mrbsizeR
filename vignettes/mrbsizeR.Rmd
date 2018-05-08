@@ -1,7 +1,6 @@
 ---
 title: "`mrbsizeR`: Scale space multiresolution analysis in R"
-author: "Thimo Schuster"
-date: "`r Sys.Date()`"
+author: "Thimo Schuster, Roman Flury"
 output:
   rmarkdown::pdf_document:
     fig_caption: yes
@@ -14,7 +13,7 @@ header-includes:
    - \usepackage{bm}
    - \usepackage{setspace}\onehalfspacing
    - \usepackage[labelfont=bf]{caption}
-   - \usepackage{gensymb}
+   # - \usepackage{gensymb}
    - \setcitestyle{round}
    - \usepackage{color}
    - \definecolor{Red}{rgb}{0.7,0,0}
@@ -95,10 +94,10 @@ image(tas.su.1995.MM5I$su, col = fields::tim.colors(), xaxt = 'n', yaxt = 'n', m
 ## Bayesian Signal Reconstruction
 
 The first step of the `mrbsizeR` analysis is the Bayesian signal reconstruction. The dataset is assumed to be a random signal which might be noisy. In order to account for this uncertainty in the data, a Bayesian model is used to reconstruct the original signal. The model used is 
-$$\bm{y} = \bm{x} + \bm{\epsilon},$$
-where $\bm{y}$ is the observed random signal (compare Figures \ref{fig:plotdata} and \ref{fig:recdata}), $\bm{x}$ is the unobserved underlying original signal and $\bm{\epsilon}$ is the noise. A $\mathcal{N}$-Inv-$\chi^{2}$ prior distribution is assumed. In `mrbsizeR`, not the full posterior $p(\bm{x}, \sigma^{2}|\bm{y})$ is of interest, but the marginal posterior $p(\bm{x}|\bm{y})$. This marginal posterior follows a multivariate $t$-distribution $t_{\nu}$ and sampling from it results in samples from the reconstructed original signal $\bm{x}$.
+$$\boldsymbol{y} = \boldsymbol{x} + \boldsymbol{\varepsilon},$$
+where $\boldsymbol{y}$ is the observed random signal (compare Figures \ref{fig:plotdata} and \ref{fig:recdata}), $\boldsymbol{x}$ is the unobserved underlying original signal and $\boldsymbol{\epsilon}$ is the noise. A $\mathcal{N}$-Inv-$\chi^{2}$ prior distribution is assumed. In `mrbsizeR`, not the full posterior $p(\boldsymbol{x}, \sigma^{2}|\boldsymbol{y})$ is of interest, but the marginal posterior $p(\boldsymbol{x}|\boldsymbol{y})$. This marginal posterior follows a multivariate $t$-distribution $t_{\nu}$ and sampling from it results in samples from the reconstructed original signal $\boldsymbol{x}$.
 
-Depending on how much is known about the noise in $\bm{y}$, the prior distribution parameters can be adjusted. For the example of the surface air temperature, the parameters $\lambda_{0} = 0.2$, $\nu_{0} = 15$ and $\sigma_{0}^{2} = 36^2$ were used. This prior has little influence on the posterior as no information about possible noise on $\bm{y}$ is available. Using the function `rmvtDCT()`, samples from a $t_{\nu}$-distribution can be generated. The sampling algorithm uses a discrete cosine transform (DCT) to speed up computations. For further information on the distributions and the sampling algorithm, see \cite{holmstrom2011} and \cite{schuster2017}. 
+Depending on how much is known about the noise in $\boldsymbol{y}$, the prior distribution parameters can be adjusted. For the example of the surface air temperature, the parameters $\lambda_{0} = 0.2$, $\nu_{0} = 15$ and $\sigma_{0}^{2} = 36^2$ were used. This prior has little influence on the posterior as no information about possible noise on $\boldsymbol{y}$ is available. Using the function `rmvtDCT()`, samples from a $t_{\nu}$-distribution can be generated. The sampling algorithm uses a discrete cosine transform (DCT) to speed up computations. For further information on the distributions and the sampling algorithm, see \cite{holmstrom2011} and \cite{schuster2017}. 
 
 \ 
 ```{r Samples_t_dist1, echo = TRUE, eval = FALSE}
@@ -108,19 +107,19 @@ tas.post.samp <- rmvtDCT(object = tas.su.1995.MM5I$su,
 ```
 \ 
 
-1000 samples of the posterior distribution of the surface air temperature in Canada, Mexico and the United States were generated. These samples now form the reconstructed signal $\bm{x}$ and are used for further analysis. 
+1000 samples of the posterior distribution of the surface air temperature in Canada, Mexico and the United States were generated. These samples now form the reconstructed signal $\boldsymbol{x}$ and are used for further analysis. 
 
 
 ## Forming of scale-dependent detail components
 
-Now that the original signal has been reconstructed, one can start forming scale-depending detail components. For being able to create differences of smooths at neighboring scales $\bm{z}_{1}, \dots, \bm{z}_{L}$, a set of appropriate smoothing levels $\lambda_{1}, \dots, \lambda_{L}$ needs to be known. In contrast to other scale space methods, where a wide range of smoothing levels is used, `mrbsizeR` only requires a few of them. The goal is to separate the features of the object (here: the surface air temperature data) into scale-distinct categories. If too many smoothing levels are chosen, this will result in categories that do not feature relevant detail components. If, on the other hand, too few smoothing levels are chosen, detail components on different scales might mix up and are not recognizable anymore. It is therefore not only crucial to determine which smoothing levels are useful, but also the number of smoothing levels  that should be used.
+Now that the original signal has been reconstructed, one can start forming scale-depending detail components. For being able to create differences of smooths at neighboring scales $\boldsymbol{z}_{1}, \dots, \boldsymbol{z}_{L}$, a set of appropriate smoothing levels $\lambda_{1}, \dots, \lambda_{L}$ needs to be known. In contrast to other scale space methods, where a wide range of smoothing levels is used, `mrbsizeR` only requires a few of them. The goal is to separate the features of the object (here: the surface air temperature data) into scale-distinct categories. If too many smoothing levels are chosen, this will result in categories that do not feature relevant detail components. If, on the other hand, too few smoothing levels are chosen, detail components on different scales might mix up and are not recognizable anymore. It is therefore not only crucial to determine which smoothing levels are useful, but also the number of smoothing levels  that should be used.
 
 All methods proposed for the selection of smoothing levels have one thing in common: They offer a good starting point for finding useful smoothing levels - but to make sure that all detail components are captured optimally, user interaction is usually inevitable. Typically, a few iterations are necessary until satisfying smoothing levels are found.
 
-The first method for the smoothing level selection depends on the smoother implemented in `mrbsizeR` and the dimension of the object analyzed only. By plotting so-called tapering functions of the eigenvalues of $\bm{Q}$, a precision matrix used in the smoother of `mrbsizeR`, and the smoothing levels $\lambda_{i}$, it is possible to determine which $\lambda$'s could be useful. The eigenvalues and the smoothing parameters are related as follows: 
+The first method for the smoothing level selection depends on the smoother implemented in `mrbsizeR` and the dimension of the object analyzed only. By plotting so-called tapering functions of the eigenvalues of $\boldsymbol{Q}$, a precision matrix used in the smoother of `mrbsizeR`, and the smoothing levels $\lambda_{i}$, it is possible to determine which $\lambda$'s could be useful. The eigenvalues and the smoothing parameters are related as follows: 
 
-- Small $\lambda$'s involve large eigenvalues of $\bm{Q}$.
-- Large $\lambda$'s involve small eigenvalues of $\bm{Q}$.
+- Small $\lambda$'s involve large eigenvalues of $\boldsymbol{Q}$.
+- Large $\lambda$'s involve small eigenvalues of $\boldsymbol{Q}$.
 
 The idea is to plot the tapering functions for different ranges of $\lambda$ so that the functions are approximately disjoint. When using these $\lambda$-ranges for calculating the differences of smooths, this will result in orthogonal detail components. For detailed information about the smoother used and the properties of the tapering functions, see \cite{holmstrom2011} and \cite{schuster2017}. 
 
@@ -136,13 +135,13 @@ TaperingPlot(lambdaSmoother = c(1, 100, 10000), mm = 120, nn = 98)
   \begin{center} 
   \includegraphics[width=0.85\textwidth]{taperingplot1.png} 
   \caption{Signal-independent tapering functions for a 120-by-98 object with the smoothing level ($\lambda$) ranges 0--1, 1--100, 100--10000, 10000--$\infty$ and $\infty$. The tapering functions are approximately disjoint.}
-	\label{fig:taperingplot1}
+  \label{fig:taperingplot1}
   \end{center}
 \end{figure}
 
-The corresponding tapering functions are shown in Figure \ref{fig:taperingplot1}. The smoothing levels 0 and $\infty$ are added to the set of smoothing levels, as both of them have a special meaning. Whereas a smoother with $\lambda = 0$ is the so-called identity smoother ($\bm{S}_{0}\bm{x} = \bm{x}$), smoothing with $\lambda_{L} = \infty$ results in the global mean. The five tapering functions in Figure \ref{fig:taperingplot1} are approximately disjoint and a good starting point when trying to find useful smoothing levels. 
+The corresponding tapering functions are shown in Figure \ref{fig:taperingplot1}. The smoothing levels 0 and $\infty$ are added to the set of smoothing levels, as both of them have a special meaning. Whereas a smoother with $\lambda = 0$ is the so-called identity smoother ($\boldsymbol{S}_{0}\boldsymbol{x} = \boldsymbol{x}$), smoothing with $\lambda_{L} = \infty$ results in the global mean. The five tapering functions in Figure \ref{fig:taperingplot1} are approximately disjoint and a good starting point when trying to find useful smoothing levels. 
 
-An even better starting point can be attained if the underlying signal $\bm{x}$ is also taken into account. `TaperingPlot()` allows to draw signal-dependent tapering functions using the (optional) argument `Xmu`. As the original signal $\bm{x}$ is unknown, it is replaced by its posterior mean.
+An even better starting point can be attained if the underlying signal $\boldsymbol{x}$ is also taken into account. `TaperingPlot()` allows to draw signal-dependent tapering functions using the (optional) argument `Xmu`. As the original signal $\boldsymbol{x}$ is unknown, it is replaced by its posterior mean.
 
 \ 
 ```{r taperingplot3, echo=TRUE, eval=FALSE}
@@ -155,7 +154,7 @@ TaperingPlot(lambdaSmoother = c(1, 100, 10000),
   \begin{center} 
   \includegraphics[width=0.85\textwidth]{taperingplot2.png} 
   \caption{Moving average of the absolute values of signal-dependent tapering functions for the surface air temperature data with the smoothing level ($\lambda$) ranges 0--1, 1--100, 100--10000, 10000--$\infty$ and $\infty$.}
-	\label{fig:taperingplot2}
+  \label{fig:taperingplot2}
   \end{center}
 \end{figure}
 
@@ -196,7 +195,7 @@ plot(x = tas.min.lambda.out)
   \begin{center} 
   \includegraphics[width=0.75\textwidth]{minlambdaplot1.png} 
   \caption{Minimization of the objective function for three smoothing levels $\lambda$. The minimum is indicated by a white point.}
-	\label{fig:objectivefun4}
+  \label{fig:objectivefun4}
   \end{center}
 \end{figure}
 
@@ -212,9 +211,9 @@ tas.mrb.out <- mrbsizeRgrid(posteriorFile = tas.post.samp$sample, mm = 120, nn =
 ```
 \ 
 
-The resulting object `tas.mrb.out` is a list containing three sublists. `smMean` contains the mean of each difference of smooths $\bm{z}_{i}$ over all `ns = 1000` samples from the posterior $p(\bm{x}|\bm{y})$. The lists `hpout` and `ciout` are relevant for the posterior credibility analysis, which is discussed in detail in the next subsection. 
+The resulting object `tas.mrb.out` is a list containing three sublists. `smMean` contains the mean of each difference of smooths $\boldsymbol{z}_{i}$ over all `ns = 1000` samples from the posterior $p(\boldsymbol{x}|\boldsymbol{y})$. The lists `hpout` and `ciout` are relevant for the posterior credibility analysis, which is discussed in detail in the next subsection. 
 
-The `smMean`-plots for the surface air temperature example are displayed in Figure \ref{fig:smoothmeanplot1}. With increasing smoothing level $\lambda$, the features are getting larger. The first component $\bm{z}_{1}$ shows the smallest scale details of $\bm{x}$. The contours of areas where a rapid change from warmer to colder temperature can be observed are clearly visible. In $\bm{z}_{2}$, larger-scale details are identifiable. The Great Lakes seem to be colder than the surrounding regions and the areas surrounding the Gulf of California are clearly warmer than the Gulf itself. $\bm{z}_{3}$ shows that the Gulf of California is the hottest region in Northern America. Furthermore, the Rocky Mountains are identifiable as a cool, longish band across the map. The next difference of smooths $\bm{z}_{4}$ shows a north-south temperature gradient, and $\bm{z}_{5}$ is the mean across the whole map.
+The `smMean`-plots for the surface air temperature example are displayed in Figure \ref{fig:smoothmeanplot1}. With increasing smoothing level $\lambda$, the features are getting larger. The first component $\boldsymbol{z}_{1}$ shows the smallest scale details of $\boldsymbol{x}$. The contours of areas where a rapid change from warmer to colder temperature can be observed are clearly visible. In $\boldsymbol{z}_{2}$, larger-scale details are identifiable. The Great Lakes seem to be colder than the surrounding regions and the areas surrounding the Gulf of California are clearly warmer than the Gulf itself. $\boldsymbol{z}_{3}$ shows that the Gulf of California is the hottest region in Northern America. Furthermore, the Rocky Mountains are identifiable as a cool, longish band across the map. The next difference of smooths $\boldsymbol{z}_{4}$ shows a north-south temperature gradient, and $\boldsymbol{z}_{5}$ is the mean across the whole map.
 
 \ 
 ```{r smoothmeanplot1, echo=TRUE, eval=FALSE}
@@ -226,8 +225,8 @@ plot(x = tas.mrb.out$smMean, color.pallet = fields::tim.colors(), turnOut = FALS
 \begin{figure}[ht]
   \begin{center} 
   \includegraphics[width=0.67\textwidth]{smoothmeanplot1.png} 
-  \caption{Decomposition of Figure \ref{fig:recdata} into differences of smooths at neighboring scales. The details $\bm{z}_{1}, \dots, \bm{z}_{5}$ are summarized by their posterior means. Warmer areas are colored red, colder areas are colored blue.}
-	\label{fig:smoothmeanplot1}
+  \caption{Decomposition of Figure \ref{fig:recdata} into differences of smooths at neighboring scales. The details $\boldsymbol{z}_{1}, \dots, \boldsymbol{z}_{5}$ are summarized by their posterior means. Warmer areas are colored red, colder areas are colored blue.}
+  \label{fig:smoothmeanplot1}
   \end{center}
 \end{figure}
 
@@ -235,7 +234,7 @@ plot(x = tas.mrb.out$smMean, color.pallet = fields::tim.colors(), turnOut = FALS
 
 ## Posterior Credibility Analysis
 
-As the detail components $\bm{z}_{i}$ are random samples from the posterior distribution $p(\bm{x}|\bm{y})$, a credibility analysis has to be done. The goal is to infer which details are truly there and which are only artifacts of random variation. Three different methods for posterior credibility analysis are implemented in `mrbsizeR`:
+As the detail components $\boldsymbol{z}_{i}$ are random samples from the posterior distribution $p(\boldsymbol{x}|\boldsymbol{y})$, a credibility analysis has to be done. The goal is to infer which details are truly there and which are only artifacts of random variation. Three different methods for posterior credibility analysis are implemented in `mrbsizeR`:
 
 - **Pointwise Maps (PW)**: Each location / pixel is tested separately for credibility. 
 - **Highest Pointwise Probability Maps (HPW)**: The inference is done jointly over all locations. In comparison to PW maps, this results in more non-credible areas. The advantage of HPW maps is that the credible areas are better connected than in PW maps. Small credibility islands with low expressiveness do appear less frequently and simplify the interpretation of the results.
@@ -255,11 +254,11 @@ plot(x = tas.mrb.out$hpout, plot_which = "PW", aspRatio = 98/120,
   \begin{center} 
   \includegraphics[width=0.67\textwidth]{pwmap1.png} 
   \caption{Pointwise (PW) maps for the surface air temperature example. Credibly warmer areas are colored red, credibly colder areas blue. Areas without credibility are gray.}
-	\label{fig:pwmap1}
+  \label{fig:pwmap1}
   \end{center}
 \end{figure}
 
-The pointwise credibility maps in Figure \ref{fig:pwmap1} do show little credibility for the difference of smooths $\bm{z}_{1}$. In $\bm{z}_{2}$, the Gulf of California is credibly colder than Baja California and the Mexican mainland on the eastern side of the Gulf. In $\bm{z}_{3}$, nearly everything is credible. This confirms that the Rocky Mountains are really colder and that the whole area of the Gulf of California is credibly warmer than surrounding regions. With $\bm{z}_{4}$, it gets clear that the northern part of the map is credibly colder than the southern part. $\bm{z}_{5}$ simply shows that the whole global mean is credible. 
+The pointwise credibility maps in Figure \ref{fig:pwmap1} do show little credibility for the difference of smooths $\boldsymbol{z}_{1}$. In $\boldsymbol{z}_{2}$, the Gulf of California is credibly colder than Baja California and the Mexican mainland on the eastern side of the Gulf. In $\boldsymbol{z}_{3}$, nearly everything is credible. This confirms that the Rocky Mountains are really colder and that the whole area of the Gulf of California is credibly warmer than surrounding regions. With $\boldsymbol{z}_{4}$, it gets clear that the northern part of the map is credibly colder than the southern part. $\boldsymbol{z}_{5}$ simply shows that the whole global mean is credible. 
 
 \ 
 ```{r hpwmap1, echo=TRUE, eval=FALSE}
@@ -272,7 +271,7 @@ plot(x = tas.mrb.out$hpout, plotWhich = "HPW", aspRatio = 98/120,
   \begin{center} 
   \includegraphics[width=0.67\textwidth]{hpwmap1.png} 
   \caption{Highest pointwise probability (HPW) maps for the surface air temperature example. Credibly warmer areas are colored red, credibly colder areas blue. Areas without credibility are gray.}
-	\label{fig:hpwmap1}
+  \label{fig:hpwmap1}
   \end{center}
 \end{figure}
 
@@ -289,24 +288,24 @@ plot(x = tas.mrb.out$ciout, color = c("dodgerblue3", "gainsboro", "firebrick1"),
   \begin{center} 
   \includegraphics[width=0.67\textwidth]{cimap1.png} 
   \caption{Simultaneous credible interval maps for the surface air temperature example. Credibly warmer areas are colored red, credibly colder areas blue. Areas without credibility are gray.}
-	\label{fig:cimap1}
+  \label{fig:cimap1}
   \end{center}
 \end{figure}
 
-Detail component $\bm{z}_{1}$ of the simultaneous credible interval maps in Figure \ref{fig:cimap1} does not exhibit any credibility. CI maps are generally the most conservative credibility analysis method. It therefore is not surprising that in details $\bm{z}_{2}$ and $\bm{z}_{3}$ more gray areas can be observed than in the PW or HPW maps (compare Figures \ref{fig:pwmap1} and \ref{fig:hpwmap1}). Still, especially for the larger-scale details, the interpretation of the results does not change.
+Detail component $\boldsymbol{z}_{1}$ of the simultaneous credible interval maps in Figure \ref{fig:cimap1} does not exhibit any credibility. CI maps are generally the most conservative credibility analysis method. It therefore is not surprising that in details $\boldsymbol{z}_{2}$ and $\boldsymbol{z}_{3}$ more gray areas can be observed than in the PW or HPW maps (compare Figures \ref{fig:pwmap1} and \ref{fig:hpwmap1}). Still, especially for the larger-scale details, the interpretation of the results does not change.
 
 
 \clearpage
 
 # Example: Comparison to Matlab software
 
-The `mrbsizeR` methodology was first implemented in the Matlab program MRBSiZer \citep{holmstrom2011on}, which is available at <http://cc.oulu.fi/~lpasanen/MRBSiZer/>. In order to ensure that the results obtained with R and Matlab are concordant, the sketch pad example from the original paper \citep{holmstrom2011} is reconstructed (compare Figure \ref{fig:sketchpad}. The digital image is of the size 284-by-400 and the prior parameters $\lambda_{0}$, $\sigma_{0}^{2}$ and $\nu_{0}$ had the values $0.2, 8.9^2$ and $10$, respectively. The set of smoothing levels used in the multiresolution analysis was $[0, 1, 30, 6 \times 10^5, \infty]$. 3000 samples of the posterior $p(\bm{x}|\bm{y})$ were generated.
+The `mrbsizeR` methodology was first implemented in the Matlab program MRBSiZer \citep{holmstrom2011on}, which is available at <http://cc.oulu.fi/~lpasanen/MRBSiZer/>. In order to ensure that the results obtained with R and Matlab are concordant, the sketch pad example from the original paper \citep{holmstrom2011} is reconstructed (compare Figure \ref{fig:sketchpad}. The digital image is of the size 284-by-400 and the prior parameters $\lambda_{0}$, $\sigma_{0}^{2}$ and $\nu_{0}$ had the values $0.2, 8.9^2$ and $10$, respectively. The set of smoothing levels used in the multiresolution analysis was $[0, 1, 30, 6 \times 10^5, \infty]$. 3000 samples of the posterior $p(\boldsymbol{x}|\boldsymbol{y})$ were generated.
 
 \begin{figure}[ht]
   \begin{center} 
   \includegraphics[width=0.67\textwidth]{sketchpad.png} 
   \caption{Original sketch pad image.}
-	\label{fig:sketchpad}
+  \label{fig:sketchpad}
   \end{center}
 \end{figure}
 
@@ -314,18 +313,18 @@ The `mrbsizeR` methodology was first implemented in the Matlab program MRBSiZer 
 \begin{figure}[ht]
   \begin{center} 
   \includegraphics[width=0.8\textwidth]{smoothmean_sketch.png} 
-  \caption{Posterior mean of detail components $\bm{z}_{i}$ from the sketch pad example.}
-	\label{fig:smoothmean_sketch}
+  \caption{Posterior mean of detail components $\boldsymbol{z}_{i}$ from the sketch pad example.}
+  \label{fig:smoothmean_sketch}
   \end{center}
 \end{figure}
 
-The detail components $\bm{z}_{i}$ are shown in Figure \ref{fig:smoothmean_sketch}. As the output of `mrbsizeRgrid()` is based on random samples, small differences between two executions are inevitable. When compared to the Matlab figures in \cite{holmstrom2011}, no big differences can be detected. More differences can be found in the HPW maps, especially in detail component $\bm{z}_{3}$ (compare Figure \ref{fig:hpwmap_sketch}). It seems that in the **R** implementation, a slightly larger part of the component was flagged as credible. Nevertheless, the detail components look very similar to their Matlab pendants and the interpretation of the results stays the same. The differences can be explained by random sampling and one can be confident that concordance across the systems holds. 
+The detail components $\boldsymbol{z}_{i}$ are shown in Figure \ref{fig:smoothmean_sketch}. As the output of `mrbsizeRgrid()` is based on random samples, small differences between two executions are inevitable. When compared to the Matlab figures in \cite{holmstrom2011}, no big differences can be detected. More differences can be found in the HPW maps, especially in detail component $\boldsymbol{z}_{3}$ (compare Figure \ref{fig:hpwmap_sketch}). It seems that in the **R** implementation, a slightly larger part of the component was flagged as credible. Nevertheless, the detail components look very similar to their Matlab pendants and the interpretation of the results stays the same. The differences can be explained by random sampling and one can be confident that concordance across the systems holds. 
 
 \begin{figure}[ht]
   \begin{center} 
   \includegraphics[width=0.8\textwidth]{hpwmap_sketch.png} 
-  \caption{Highest pointwise probabilities maps of detail components $\bm{z}_{i}$ from the sketch pad example. Credibly darker areas are red, credibly brighter areas are blue.}
-	\label{fig:hpwmap_sketch}
+  \caption{Highest pointwise probabilities maps of detail components $\boldsymbol{z}_{i}$ from the sketch pad example. Credibly darker areas are red, credibly brighter areas are blue.}
+  \label{fig:hpwmap_sketch}
   \end{center}
 \end{figure}
 
@@ -378,7 +377,7 @@ spherical.mrb.out <- mrbsizeRsphere(posteriorFile = dat.ccsm4, mm = 144, nn = 72
 ```
 \ 
 
-For creating the differences of smooths at neighboring scales in Figure \ref{fig:spherical3}, the smoothing level sequence $[\lambda_{1}, \dots, \lambda_{3}] = [0, 0.0026, \infty]$ was used. Only one smoothing level was added to the default sequence $[0, \infty]$. This is enough to capture features at all different scales. Whereas $\bm{z}_{1}$ shows small-scale details like colder regions in Tibet or Chile, $\bm{z}_{2}$ reveals a large red-colored area around the equator and large blue-colored areas at the Polar Regions. $\bm{z}_{3}$ shows the global mean. 
+For creating the differences of smooths at neighboring scales in Figure \ref{fig:spherical3}, the smoothing level sequence $[\lambda_{1}, \dots, \lambda_{3}] = [0, 0.0026, \infty]$ was used. Only one smoothing level was added to the default sequence $[0, \infty]$. This is enough to capture features at all different scales. Whereas $\boldsymbol{z}_{1}$ shows small-scale details like colder regions in Tibet or Chile, $\boldsymbol{z}_{2}$ reveals a large red-colored area around the equator and large blue-colored areas at the Polar Regions. $\boldsymbol{z}_{3}$ shows the global mean. 
 
 
 \ 
@@ -392,14 +391,14 @@ plot(x = spherical.mrb.out$smMean, lon = dat.ccsm4$lon, lat = dat.ccsm4$lat,
 \begin{figure}[ht]
   \begin{center} 
   \includegraphics[width=1\textwidth]{smoothmeanplot_sphere.png} 
-  \caption{Decomposition of Figure \ref{fig:spherical1} into differences of smooths at neighboring scales. The details $\bm{z}_{1}, \dots, \bm{z}_{3}$ are summarized by their posterior means. Areas with larger data values are colored red, areas with smaller values are colored blue.}
-	\label{fig:spherical3}
+  \caption{Decomposition of Figure \ref{fig:spherical1} into differences of smooths at neighboring scales. The details $\boldsymbol{z}_{1}, \dots, \boldsymbol{z}_{3}$ are summarized by their posterior means. Areas with larger data values are colored red, areas with smaller values are colored blue.}
+  \label{fig:spherical3}
   \end{center}
 \end{figure}
 
 \pagebreak
 
-The posterior credibility analysis of detail component $\bm{z}_{1}$ using highest pointwise probability (HPW) maps (compare Figure \ref{fig:spherical4}) reveals that regions like Chile or the eastern part of South Africa are credibly colder than surrounding areas. The large-scale components in $\bm{z}_{2}$ are mostly credible and hence "really there". The global mean in $\bm{z}_{3}$ is not credible in this example. The reason is the data used: Instead of considering the yearly surface air temperature, its deviations to the yearly mean are considered. $\bm{z}_{3}$ is therefore not the average surface air temperature, but the average mean deviation, which always equals 0.
+The posterior credibility analysis of detail component $\boldsymbol{z}_{1}$ using highest pointwise probability (HPW) maps (compare Figure \ref{fig:spherical4}) reveals that regions like Chile or the eastern part of South Africa are credibly colder than surrounding areas. The large-scale components in $\boldsymbol{z}_{2}$ are mostly credible and hence "really there". The global mean in $\boldsymbol{z}_{3}$ is not credible in this example. The reason is the data used: Instead of considering the yearly surface air temperature, its deviations to the yearly mean are considered. $\boldsymbol{z}_{3}$ is therefore not the average surface air temperature, but the average mean deviation, which always equals 0.
 
 \ 
 ```{r spherical6, echo=TRUE, eval=FALSE}
@@ -413,7 +412,7 @@ plot(x = spherical.mrb.out$hpout, lon = dat.ccsm4$lon, lat = dat.ccsm4$lat,
   \begin{center} 
   \includegraphics[width=1\textwidth]{hpwmap_sphere.png} 
   \caption{Highest pointwise probability maps. Areas with credibly larger data values are colored red, areas with credibly smaller values are blue. Areas without credibility are gray.}
-	\label{fig:spherical4}
+  \label{fig:spherical4}
   \end{center}
 \end{figure}
 

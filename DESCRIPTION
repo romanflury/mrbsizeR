@@ -20,7 +20,7 @@ Description: A method for the multiresolution analysis of spatial fields and ima
     (2) Using differences of smooths, scale-dependent features of the reconstructed signal can be found.
     (3) Posterior credibility analysis of the differences of smooths created.
     The method has first been proposed by Holmstrom, Pasanen, Furrer, Sain (2011) <DOI:10.1016/j.csda.2011.04.011>.
-    Matlab code from the authors above is available under http://cc.oulu.fi/~lpasanen/MRBSiZer/.
+    Matlab code is available under http://cc.oulu.fi/~lpasanen/MRBSiZer/.
 License: GPL-2
 LazyData: TRUE
 Depends:
@@ -40,4 +40,5 @@ Suggests: knitr,
     testthat
 VignetteBuilder: knitr
 BugReports: https://github.com/romanflury/mrbsizeR/issues
-URL: https://github.com/romanflury/mrbsizeR, https://romanflury.github.io/mrbsizeR/
+URL: https://github.com/romanflury/mrbsizeR,
+     https://romanflury.github.io/mrbsizeR/
