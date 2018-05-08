@@ -5,7 +5,7 @@
 
 ## 1.1.x Patches
 
-# mrbsizeR 1.1.2
+# mrbsizeR 1.1.2 (silent)
 
 * modifications for pkgdown website
 

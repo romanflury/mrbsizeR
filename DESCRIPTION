@@ -40,4 +40,4 @@ Suggests: knitr,
     testthat
 VignetteBuilder: knitr
 BugReports: https://github.com/romanflury/mrbsizeR/issues
-URL: https://github.com/romanflury/mrbsizeR
+URL: https://github.com/romanflury/mrbsizeR, https://romanflury.github.io/mrbsizeR/
