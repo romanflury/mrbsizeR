@@ -8,7 +8,6 @@ output:
     toc: true
     toc_depth: 2
     citation_package: natbib
-bibliography: bibliography.bib
 header-includes:
    - \usepackage{bm}
    - \usepackage{setspace}\onehalfspacing
@@ -18,12 +17,21 @@ header-includes:
    - \definecolor{Red}{rgb}{0.7,0,0}
    - \definecolor{Blue}{rgb}{0,0,0.8}
    - \usepackage{hyperref}
-   
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{`mrbsizeR`: Scale space multiresolution analysis in R}
   %\VignetteEncoding{UTF-8}
+bibliography: bibliography.bib
 ---
+
+```{r setup, include = FALSE, cache = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE, 
+  comment = "#>", 
+  fig.width = 6, fig.height = 6, fig.align = "center"
+)
+options(digits = 3)
+```
 
 ```{r packageload, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 library(fields)
@@ -470,5 +478,5 @@ We wish to thank the North American Regional Climate Change Assessment Program (
 
 We acknowledge the World Climate Research Program’s Working Group on Coupled Modelling, which is responsible for CMIP, and we thank the climate modeling groups for producing and making available their model output. For CMIP the U.S. Department of Energy’s Program for Climate Model Diagnosis and Intercomparison provides coordinating support and led development of software infrastructure in partnership with the Global Organization for Earth System Science Portals.
 
-# References
+# Bibliography
 

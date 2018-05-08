@@ -19,9 +19,9 @@ HPWmap(smoothVec, mm, nn, prob = 0.95)
 List with two arrays:
 \itemize{
 \item \code{pw}: Pointwise probabilities (\code{VmapPW}) including the dimensions
-    of the original input image, \code{mm} and \code{nn}.
+of the original input image, \code{mm} and \code{nn}.
 \item \code{hpw}: Highest pointwise probabilities (\code{VmapHPW}) including
-    the dimensions of the original input image, \code{mm} and \code{nn}.
+the dimensions of the original input image, \code{mm} and \code{nn}.
 }
 }
 \description{
@@ -30,7 +30,7 @@ all differences of smooths at neighboring scales are computed.
 }
 \details{
 \code{HPWmap} is an internal function of \code{\link{mrbsizeRgrid}} and is usually
-not used independently. The output can be analyzed with the plotting function 
+not used independently. The output can be analyzed with the plotting function
 \code{\link{plot.HPWmapGrid}}.
 }
 \examples{

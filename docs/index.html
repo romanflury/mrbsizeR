@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">mrbsizeR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.1.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.1.2.9000</span>
       </span>
     </div>
 
@@ -79,7 +79,6 @@
     <div id="mrbsizer" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#mrbsizer" class="anchor"></a>mrbsizeR</h1></div>
-<p>The goal of mrbsizeR is to …</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -97,7 +96,7 @@ sampleData[<span class="dv">4</span><span class="op">:</span><span class="dv">6<
 
 <span class="co"># Generate samples from multivariate t-distribution</span>
 tSamp &lt;-<span class="st"> </span><span class="kw"><a href="reference/rmvtDCT.html">rmvtDCT</a></span>(<span class="dt">object =</span> sampleData, <span class="dt">lambda =</span> <span class="fl">0.2</span>, <span class="dt">sigma =</span> <span class="dv">6</span>, <span class="dt">nu0 =</span> <span class="dv">15</span>,
-                  <span class="dt">ns =</span> <span class="dv">1000</span>)  
+                  <span class="dt">ns =</span> <span class="dv">1000</span>)
  
 <span class="co"># mrbsizeRgrid analysis</span>
 mrbOut &lt;-<span class="st"> </span><span class="kw"><a href="reference/mrbsizeRgrid.html">mrbsizeRgrid</a></span>(<span class="dt">posteriorFile =</span> tSamp<span class="op">$</span>sample, <span class="dt">mm =</span> <span class="dv">10</span>, <span class="dt">nn =</span> <span class="dv">10</span>,

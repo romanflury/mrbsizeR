@@ -1,7 +1,7 @@
 Package: mrbsizeR
 Type: Package
 Title: Scale Space Multiresolution Analysis of Random Signals 
-Version: 1.1.2
+Version: 1.1.2.9000
 Date: 2018-05-02
 Author: Thimo Schuster [aut],
     Roman Flury [cre, ctb],
@@ -34,6 +34,7 @@ Imports:
     methods(>= 3.0.0),
     Rcpp (>= 0.12.14)
 LinkingTo: Rcpp
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown,

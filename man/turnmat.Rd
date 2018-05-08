@@ -14,8 +14,8 @@ Matrix \code{x}, turned by 90 degrees counter-clockwise.
 }
 \description{
 Help function to turn matrix 90 degrees counter-clockwise.
-\code{turnmat} is used as an internal function in some of the plotting 
-functions. Depending on how the data is stored, it can be necessary to turn 
+\code{turnmat} is used as an internal function in some of the plotting
+functions. Depending on how the data is stored, it can be necessary to turn
 the matrices 90 degrees counter-clockwise for being able to plot them correctly.
 }
 \examples{

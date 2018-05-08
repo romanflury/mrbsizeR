@@ -1,5 +1,21 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-language: R
+language: r
+r:
+  - oldrel
+  - release
+  - devel
 sudo: false
 cache: packages
+
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+      env:
+        global:
+          - R_LIBS="http://cran.rstudio.com"
+          - R_CHECK_ARGS="--as-cran"
+after_success:
+  - Rscript -e 'library(covr);coveralls();codecov()'

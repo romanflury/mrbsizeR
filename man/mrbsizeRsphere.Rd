@@ -18,7 +18,7 @@ mrbsizeRsphere(posteriorFile, mm, nn, lambdaSmoother, prob = 0.95,
 
 \item{prob}{Credibility level for the posterior credibility analysis.}
 
-\item{smoothOut}{Should the differences of smooths at neighboring scales be 
+\item{smoothOut}{Should the differences of smooths at neighboring scales be
 returned as output (FALSE by default)?}
 }
 \value{
@@ -26,28 +26,28 @@ A list containing the following sublists:
 
 \code{smMean} Posterior mean of all differences of smooths created.
 
-\code{hpout} Pointwise (PW) and highest pointwise (HPW) probabilities 
-   of all differences of smooths created.
+\code{hpout} Pointwise (PW) and highest pointwise (HPW) probabilities
+of all differences of smooths created.
 
 \code{ciout} Simultaneous credible intervals (CI) of all differences of
-    smooths created.
+smooths created.
 
-\code{smoothSamples} Samples of differences of smooths at neighboring scales, 
-    as column vectors.
+\code{smoothSamples} Samples of differences of smooths at neighboring scales,
+as column vectors.
 }
 \description{
 \code{mrbsizeRSphere} is the interface of the scale space multiresolution method
-for spherical data. Here, the differences of smooths as well as the posterior 
+for spherical data. Here, the differences of smooths as well as the posterior
 credibility analysis are computed. The output can be analyzed with the plotting
-functions \code{\link{plot.smMeanSphere}}, \code{\link{plot.CImapSphere}} 
+functions \code{\link{plot.smMeanSphere}}, \code{\link{plot.CImapSphere}}
 and \code{\link{plot.HPWmapSphere}}.
 }
 \details{
-In contrast to \code{mrbsizeRgrid}, \code{mrbsizeRsphere} does not conduct 
-Bayesian signal reconstruction via sampling from a posterior distribution. 
+In contrast to \code{mrbsizeRgrid}, \code{mrbsizeRsphere} does not conduct
+Bayesian signal reconstruction via sampling from a posterior distribution.
 Samples of the posterior distribution have to be provided instead.
 
-For further information and examples, see \code{\link{mrbsizeRgrid}} and 
+For further information and examples, see \code{\link{mrbsizeRgrid}} and
 the vignette.
 }
 \examples{

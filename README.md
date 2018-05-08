@@ -1,7 +1,5 @@
 # mrbsizeR
 
-The goal of mrbsizeR is to ...
-
 ## Installation
 
 You can install mrbsizeR from github with:
@@ -23,7 +21,7 @@ sampleData[4:6, 6:8] <- sampleData[4:6, 6:8] + 5
 
 # Generate samples from multivariate t-distribution
 tSamp <- rmvtDCT(object = sampleData, lambda = 0.2, sigma = 6, nu0 = 15,
-                  ns = 1000)  
+                  ns = 1000)
  
 # mrbsizeRgrid analysis
 mrbOut <- mrbsizeRgrid(posteriorFile = tSamp$sample, mm = 10, nn = 10,

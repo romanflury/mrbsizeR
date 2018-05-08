@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrbsizeR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.1.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.1.2.9000</span>
       </span>
     </div>
 
@@ -100,21 +100,21 @@ For data on a regular grid, one can summarize the analysis procedure in three st
 <p>For the first example, data from the North American Regional Climate Change Assessment Program (NARCCAP) is analyzed. NARCCAP is an international program producing climate change simulations for Canada, the United States and northern Mexico. The data used for this example is based on the MM5I regional model  and is a simulation of the surface air temperature during summer 1995 , see also <a href="http://www2.mmm.ucar.edu/mm5/" class="uri">http://www2.mmm.ucar.edu/mm5/</a> and <a href="http://www.narccap.ucar.edu/index.html" class="uri">http://www.narccap.ucar.edu/index.html</a>. The simulation was carried out on a 120-by-98 regular grid, therefore 11’760 data points are available in total. The data set is not part of the <code>mrbsizeR</code> package.</p>
 <p> </p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Structure of the dataset </span>
-<span class="kw">str</span>(tas.su.<span class="fl">1995.</span>MM5I)</code></pre></div>
-<pre><code>## List of 3
-##  $ lon: num [1:120, 1:98] 241 241 242 242 242 ...
-##  $ lat: num [1:120, 1:98] 23 23.1 23.2 23.3 23.5 ...
-##  $ su : num [1:120, 1:98] 21.8 21.7 21.7 21.7 21.7 ...</code></pre>
+<span class="kw">str</span>(tas.su.<span class="fl">1995.</span>MM5I)
+<span class="co">#&gt; List of 3</span>
+<span class="co">#&gt;  $ lon: num [1:120, 1:98] 241 241 242 242 242 ...</span>
+<span class="co">#&gt;  $ lat: num [1:120, 1:98] 23 23.1 23.2 23.3 23.5 ...</span>
+<span class="co">#&gt;  $ su : num [1:120, 1:98] 21.8 21.7 21.7 21.7 21.7 ...</span></code></pre></div>
 <p> </p>
 <p>The variables <code>lon</code> and <code>lat</code> describe the longitude and latitude of each simulated surface air temperature in summer 1995 in degrees Celsius (<code>su</code>). The data covers the United States, the southern part of Canada and the northern part of Mexico.</p>
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="mrbsizeR_files/figure-html/plotdata-1.png" alt="\label{fig:plotdata}Simulated surface air temperature in summer 1995 for the United States, the southern part of Canada and the northern part of Mexico. The unit of the temperature is degrees Celsius." width="480"><p class="caption">
 Simulated surface air temperature in summer 1995 for the United States, the southern part of Canada and the northern part of Mexico. The unit of the temperature is degrees Celsius.
 </p>
 </div>
 <p>As the output of the <code>mrbsizeR</code> analysis are plots on a rectangular grid, it makes sense to display Figure  also like this (compare Figure ). By combining Figures  and , it is still possible to recognize all the important features such as coastlines, the Baja California or the Great Lakes.</p>
-<div class="figure">
-<img src="mrbsizeR_files/figure-html/recdata-1.png" alt="\label{fig:recdata}Simulated surface air temperature in summer 1995 for the United States, the southern part of Canada and the northern part of Mexico on a rectangular grid. Red describes warmer areas, colder areas are colored blue." width="700"><p class="caption">
+<div class="figure" style="text-align: center">
+<img src="mrbsizeR_files/figure-html/recdata-1.png" alt="\label{fig:recdata}Simulated surface air temperature in summer 1995 for the United States, the southern part of Canada and the northern part of Mexico on a rectangular grid. Red describes warmer areas, colder areas are colored blue." width="576"><p class="caption">
 Simulated surface air temperature in summer 1995 for the United States, the southern part of Canada and the northern part of Mexico on a rectangular grid. Red describes warmer areas, colder areas are colored blue.
 </p>
 </div>
@@ -165,8 +165,8 @@ tas.min.lambda.out &lt;-<span class="st"> </span><span class="kw"><a href="../re
 <p>Most of the arguments of <code><a href="../reference/MinLambda.html">MinLambda()</a></code> are already known from <code><a href="../reference/TaperingPlot.html">TaperingPlot()</a></code>. In addition to this, it is necessary to specify <code>nGrid</code> (size of the grid the optimization should be carried out on, nGrid-by-nGrid), <code>nLambda</code> (either 2 or 3, number of <span class="math inline">\(\lambda\)</span>’s to be optimized) and <code>sphere</code> (logical; is the analysis on spherical data?). The optimal <span class="math inline">\(\lambda\)</span> values evaluated for the surface air temperature data are 3.16e-11, 1e+02 and 1e+04.</p>
 <p> </p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Minimal smoothing parameter values</span>
-tas.min.lambda.out<span class="op">$</span>lambda[tas.min.lambda.out<span class="op">$</span>minind]</code></pre></div>
-<pre><code>## [1] 3.162278e-11 1.000000e+02 1.000000e+04</code></pre>
+tas.min.lambda.out<span class="op">$</span>lambda[tas.min.lambda.out<span class="op">$</span>minind]
+<span class="co">#&gt; [1] 3.16e-11 1.00e+02 1.00e+04</span></code></pre></div>
 <p> </p>
 <p>The minimization result can also be shown visually. For each optimized pair of <span class="math inline">\(\lambda\)</span>’s, a plot is drawn. Figure  shows the optimization for the surface air temperature example. The optimized <span class="math inline">\(\lambda\)</span>’s have the indices <span class="math inline">\(\lambda_{2}\)</span>, <span class="math inline">\(\lambda_{3}\)</span> and <span class="math inline">\(\lambda_{4}\)</span>, because <span class="math inline">\(\lambda_{1} = 0\)</span> and <span class="math inline">\(\lambda_{5} = \infty\)</span>.</p>
 <p> </p>
@@ -240,7 +240,7 @@ tas.mrb.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference
 
 <p>Data from the Community Climate System Model 4.0 (CCSM4, see <a href="http://www.cesm.ucar.edu/models/ccsm4.0/ccsm/" class="uri">http://www.cesm.ucar.edu/models/ccsm4.0/ccsm/</a>) is used to illustrate <code>mrbsizeR</code> on spherical data. CCSM4 is a climate model simulating the earth’s climate system, see . For this analysis, the simulated surface air temperature in June of the years 1870–2100 was considered. Instead of using the surface air temperature itself, its deviation to the yearly mean has been used. This detrends the data and makes the simulations of 231 consecutive years comparable. The resulting data set consisting of 231 observations is then used as samples for the <code>mrbsizeR</code> analysis. The data is not part of the <code>mrbsizeR</code> package.</p>
 <p>Figure  summarizes the samples by their mean. It is clearly visible that the temperature is higher in areas around the equator and gets lower closer to the Polar Regions. The unit of the surface air temperature deviation is degrees Kelvin.</p>
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="mrbsizeR_files/figure-html/spherical1-1.png" alt="\label{fig:spherical1}Deviation from mean of simulated air temperature measurements (CCSM4) for the years 1870--2100 in degrees Kelvin. The deviations are summarized by their mean." width="480"><p class="caption">
 Deviation from mean of simulated air temperature measurements (CCSM4) for the years 1870–2100 in degrees Kelvin. The deviations are summarized by their mean.
 </p>
@@ -319,9 +319,9 @@ smoothSamples &lt;-<span class="st"> </span><span class="kw">list</span>(); ciou
 <p>We wish to thank the North American Regional Climate Change Assessment Program (NARCCAP) for providing the data used in this paper. NARCCAP is funded by the National Science Foundation (NSF), the U.S. Department of Energy (DoE), the National Oceanic and Atmospheric Administration (NOAA), and the U.S. Environmental Protection Agency Office of Research and Development (EPA).</p>
 <p>We acknowledge the World Climate Research Program’s Working Group on Coupled Modelling, which is responsible for CMIP, and we thank the climate modeling groups for producing and making available their model output. For CMIP the U.S. Department of Energy’s Program for Climate Model Diagnosis and Intercomparison provides coordinating support and led development of software infrastructure in partnership with the Global Organization for Earth System Science Portals.</p>
 </div>
-<div id="references" class="section level1">
+<div id="bibliography" class="section level1">
 <h1 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h1>
+<a href="#bibliography" class="anchor"></a>Bibliography</h1>
 </div>
   </div>
 
@@ -342,7 +342,7 @@ smoothSamples &lt;-<span class="st"> </span><span class="kw">list</span>(); ciou
       <li><a href="#example-data-on-a-sphere">Example: Data On A Sphere</a></li>
       <li><a href="#what-if-not-enough-computing-power-is-available">What If Not Enough Computing Power Is Available?</a></li>
       <li><a href="#data-acknowledgments">Data Acknowledgments</a></li>
-      <li><a href="#references">References</a></li>
+      <li><a href="#bibliography">Bibliography</a></li>
       </ul>
 </div>
       </div>
