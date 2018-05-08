@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">mrbsizeR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.1.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.1.2</span>
       </span>
     </div>
 
@@ -90,9 +90,25 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## basic example code</code></pre></div>
-<p><a href="https://cran.r-project.org/package=mrbsizeR"><img src="http://www.r-pkg.org/badges/version/mrbsizeR" alt="CRAN_Status_Badge"></a></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Artificial sample data</span>
+<span class="kw">set.seed</span>(<span class="dv">987</span>)
+sampleData &lt;-<span class="st"> </span><span class="kw">matrix</span>(stats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dv">100</span>), <span class="dt">nrow =</span> <span class="dv">10</span>)
+sampleData[<span class="dv">4</span><span class="op">:</span><span class="dv">6</span>, <span class="dv">6</span><span class="op">:</span><span class="dv">8</span>] &lt;-<span class="st"> </span>sampleData[<span class="dv">4</span><span class="op">:</span><span class="dv">6</span>, <span class="dv">6</span><span class="op">:</span><span class="dv">8</span>] <span class="op">+</span><span class="st"> </span><span class="dv">5</span>
+
+<span class="co"># Generate samples from multivariate t-distribution</span>
+tSamp &lt;-<span class="st"> </span><span class="kw"><a href="reference/rmvtDCT.html">rmvtDCT</a></span>(<span class="dt">object =</span> sampleData, <span class="dt">lambda =</span> <span class="fl">0.2</span>, <span class="dt">sigma =</span> <span class="dv">6</span>, <span class="dt">nu0 =</span> <span class="dv">15</span>,
+                  <span class="dt">ns =</span> <span class="dv">1000</span>)  
+ 
+<span class="co"># mrbsizeRgrid analysis</span>
+mrbOut &lt;-<span class="st"> </span><span class="kw"><a href="reference/mrbsizeRgrid.html">mrbsizeRgrid</a></span>(<span class="dt">posteriorFile =</span> tSamp<span class="op">$</span>sample, <span class="dt">mm =</span> <span class="dv">10</span>, <span class="dt">nn =</span> <span class="dv">10</span>,
+                       <span class="dt">lambdaSmoother =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1000</span>), <span class="dt">prob =</span> <span class="fl">0.95</span>)
+
+<span class="co"># Posterior mean of the differences of smooths</span>
+<span class="kw">plot</span>(<span class="dt">x =</span> mrbOut<span class="op">$</span>smMean, <span class="dt">turn_out =</span> <span class="ot">TRUE</span>)
+
+<span class="co"># Credibility analysis using simultaneous credible intervals</span>
+<span class="kw">plot</span>(<span class="dt">x =</span> mrbOut<span class="op">$</span>ciout, <span class="dt">turn_out =</span> <span class="ot">TRUE</span>) </code></pre></div>
+<p><a href="https://cran.r-project.org/package=mrbsizeR"><img src="http://www.r-pkg.org/badges/version/mrbsizeR" alt="CRAN_Status_Badge"></a> <a href="https://cran.r-project.org/package=mrbsizeR"><img src="https://cranlogs.r-pkg.org/badges/mrbsizeR"></a></p>
 </div>
 </div>
   </div>

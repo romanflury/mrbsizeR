@@ -1,7 +1,7 @@
 Package: mrbsizeR
 Type: Package
 Title: Scale Space Multiresolution Analysis of Random Signals 
-Version: 1.1.1
+Version: 1.1.2
 Date: 2018-05-02
 Author: Thimo Schuster [aut],
     Roman Flury [cre, ctb],
