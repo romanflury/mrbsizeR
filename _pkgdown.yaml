@@ -46,7 +46,7 @@ navbar:
   right:
     - icon: fa-github fa-lg
       text: "github"
-      href: https://github.com/lbusett/MODIStsp/
+      href: https://github.com/romanflury/mrbsizeR
     - icon: fa-lg fa-twitter
       text: "twitter"
       href: http://twitter.com/fluryro
