@@ -1,6 +1,6 @@
 ---
 title: "`mrbsizeR`: Scale space multiresolution analysis in R"
-author: "Thimo Schuster, Roman Flury"
+author: "Thimo Schuster"
 output:
   rmarkdown::pdf_document:
     fig_caption: yes

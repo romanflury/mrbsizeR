@@ -40,12 +40,22 @@
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118890730-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118890730-1');
+</script>
+
   </head>
 
   <body>
     <div class="container template-reference-index">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -63,12 +73,9 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fa fa-home"></span>
      
   </a>
-</li>
-<li>
-  <a href="../articles/mrbsizeR.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -80,9 +87,17 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/romanflury/mrbsizeR">
+  <a href="https://github.com/lbusett/MODIStsp/">
     <span class="fa fa-github fa-lg"></span>
      
+    github
+  </a>
+</li>
+<li>
+  <a href="http://twitter.com/fluryro">
+    <span class="fa fa-lg fa-twitter"></span>
+     
+    twitter
   </a>
 </li>
       </ul>
@@ -110,7 +125,7 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-exported-functions" class="hasAnchor"><a href="#section-exported-functions" class="anchor"></a>Exported Functions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -177,12 +192,6 @@
       </tr><tr>
         <!--  -->
         <td>
-          <p><code><a href="mrbsizeR.html">mrbsizeR</a></code> </p>
-        </td>
-        <td><p>mrbsizeR: Scale space multiresolution analysis in R.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
           <p><code><a href="mrbsizeRgrid.html">mrbsizeRgrid()</a></code> </p>
         </td>
         <td><p>Multiresolution analysis of random signals.</p></td>
@@ -195,10 +204,30 @@
       </tr><tr>
         <!--  -->
         <td>
-          <p><code><a href="mrbsizer-package.html">mrbsizer-package</a></code> </p>
+          <p><code><a href="rmvtDCT.html">rmvtDCT()</a></code> </p>
         </td>
-        <td><p>A short title line describing what the package does</p></td>
+        <td><p>Sampling from marginal posterior multivariate t-distribution.</p></td>
       </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="tridiag.html">tridiag()</a></code> </p>
+        </td>
+        <td><p>Generate a tridiagonal matrix.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="turnmat.html">turnmat()</a></code> </p>
+        </td>
+        <td><p>Turn matrix 90 degrees counter-clockwise.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-s-methods" class="hasAnchor"><a href="#section-s-methods" class="anchor"></a>S3 Methods</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
         <!--  -->
         <td>
           <p><code><a href="plot.CImapGrid.html">plot(<i>&lt;CImapGrid&gt;</i>)</a></code> </p>
@@ -240,24 +269,6 @@
           <p><code><a href="plot.smMeanSphere.html">plot(<i>&lt;smMeanSphere&gt;</i>)</a></code> </p>
         </td>
         <td><p>Plotting of scale-dependent features on a sphere.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="rmvtDCT.html">rmvtDCT()</a></code> </p>
-        </td>
-        <td><p>Sampling from marginal posterior multivariate t-distribution.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="tridiag.html">tridiag()</a></code> </p>
-        </td>
-        <td><p>Generate a tridiagonal matrix.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="turnmat.html">turnmat()</a></code> </p>
-        </td>
-        <td><p>Turn matrix 90 degrees counter-clockwise.</p></td>
       </tr>
     </tbody>
     </table>
@@ -266,7 +277,8 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-exported-functions">Exported Functions</a></li>
+      <li><a href="#section-s-methods">S3 Methods</a></li>
     </ul>
   </div>
 </div>

@@ -19,7 +19,3 @@ matrix:
           - R_CHECK_ARGS="--as-cran"
 after_success:
   - Rscript -e 'library(covr);coveralls();codecov()'
-
-template:
-  params:
-    ganalytics: UA-118890730-1

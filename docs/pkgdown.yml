@@ -3,4 +3,7 @@ pkgdown: 1.0.0
 pkgdown_sha: ~
 articles:
   mrbsizeR: mrbsizeR.html
+urls:
+  reference: http://https://romanflury.github.io/mrbsizeR//reference
+  article: http://https://romanflury.github.io/mrbsizeR//articles
 

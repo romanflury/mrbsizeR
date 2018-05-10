@@ -1,0 +1,50 @@
+title: mrbsizeR
+url: http://https://romanflury.github.io/mrbsizeR/
+template:
+  params:
+    ganalytics: UA-118890730-1
+reference:
+  - title: Exported Functions
+    desc: ~
+    contents:
+      - '`CImap`'
+      - '`HPWmap`'
+      - '`MinLambda`'
+      - '`TaperingPlot`'
+      - '`dctMatrix`'
+      - '`dftMatrix`'
+      - '`eigenLaplace`'
+      - '`eigenQsphere`'
+      - '`fftshift`'
+      - '`ifftshift`'
+      - '`mrbsizeRgrid`'
+      - '`mrbsizeRsphere`'
+      - '`rmvtDCT`'
+      - '`tridiag`'
+      - '`turnmat`'
+  - title: S3 Methods
+    desc: ~
+    contents:
+      - '`plot.CImapGrid`'
+      - '`plot.CImapSphere`'
+      - '`plot.HPWmapGrid`'
+      - '`plot.HPWmapSphere`'
+      - '`plot.minLambda`'
+      - '`plot.smMeanGrid`'
+      - '`plot.smMeanSphere`'
+navbar:
+  type: inverse
+  left:
+    - icon: fa-home
+      href: index.html
+    - text: "Reference"
+      href: reference/index.html
+    - text: "Changelog"
+      href: news/index.html
+  right:
+    - icon: fa-github fa-lg
+      text: "github"
+      href: https://github.com/lbusett/MODIStsp/
+    - icon: fa-lg fa-twitter
+      text: "twitter"
+      href: http://twitter.com/fluryro
