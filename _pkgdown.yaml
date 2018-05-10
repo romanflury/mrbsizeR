@@ -37,6 +37,8 @@ navbar:
   left:
     - icon: fa-home
       href: index.html
+    - text: "Vignette"
+      href: articles/mrbsizeR.html
     - text: "Reference"
       href: reference/index.html
     - text: "Changelog"
