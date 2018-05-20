@@ -1,6 +1,7 @@
 ---
 title: "`mrbsizeR`: Scale space multiresolution analysis in R"
 author: "Thimo Schuster"
+bibliography: bibliography.bib
 output:
   rmarkdown::pdf_document:
     fig_caption: yes
@@ -18,10 +19,10 @@ header-includes:
    - \definecolor{Blue}{rgb}{0,0,0.8}
    - \usepackage{hyperref}
 vignette: >
+  \usepackage[utf8]{inputenc}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{`mrbsizeR`: Scale space multiresolution analysis in R}
   %\VignetteEncoding{UTF-8}
-bibliography: bibliography.bib
 ---
 
 ```{r setup, include = FALSE, cache = FALSE}
@@ -478,5 +479,5 @@ We wish to thank the North American Regional Climate Change Assessment Program (
 
 We acknowledge the World Climate Research Program’s Working Group on Coupled Modelling, which is responsible for CMIP, and we thank the climate modeling groups for producing and making available their model output. For CMIP the U.S. Department of Energy’s Program for Climate Model Diagnosis and Intercomparison provides coordinating support and led development of software infrastructure in partnership with the Global Organization for Earth System Science Portals.
 
-# Bibliography
+# References
 

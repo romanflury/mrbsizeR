@@ -2,6 +2,7 @@ title: mrbsizeR
 url: http://https://romanflury.github.io/mrbsizeR/
 template:
   params:
+    bootswatch: yeti
     ganalytics: UA-118890730-1
 reference:
   - title: Exported Functions
@@ -17,8 +18,10 @@ reference:
       - '`eigenQsphere`'
       - '`fftshift`'
       - '`ifftshift`'
+      - '`mrbsizeR`'
       - '`mrbsizeRgrid`'
       - '`mrbsizeRsphere`'
+      - '`mrbsizer-package`'
       - '`rmvtDCT`'
       - '`tridiag`'
       - '`turnmat`'
@@ -39,12 +42,12 @@ navbar:
       href: index.html
     - text: "Vignette"
       href: articles/mrbsizeR.html
-    - text: "Reference"
+    - text: "Manual"
       href: reference/index.html
     - text: "Changelog"
       href: news/index.html
   right:
-    - icon: fa-github fa-lg
+    - icon: fa-lg fa-github
       text: "github"
       href: https://github.com/romanflury/mrbsizeR
     - icon: fa-lg fa-twitter
