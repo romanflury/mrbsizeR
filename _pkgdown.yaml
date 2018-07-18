@@ -42,7 +42,7 @@ navbar:
       href: index.html
     - text: "Vignette"
       href: articles/mrbsizeR.html
-    - text: "Manual"
+    - text: "Reference"
       href: reference/index.html
     - text: "Changelog"
       href: news/index.html

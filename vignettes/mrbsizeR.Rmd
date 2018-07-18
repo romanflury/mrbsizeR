@@ -1,9 +1,8 @@
 ---
 title: "`mrbsizeR`: Scale space multiresolution analysis in R"
-author: "Thimo Schuster"
-bibliography: bibliography.bib
+author: "Thimo Schuster, Roman Flury"
 output:
-  rmarkdown::pdf_document:
+  rmarkdown::html_document:
     fig_caption: yes
     number_sections: true
     toc: true
@@ -18,6 +17,7 @@ header-includes:
    - \definecolor{Red}{rgb}{0.7,0,0}
    - \definecolor{Blue}{rgb}{0,0,0.8}
    - \usepackage{hyperref}
+bibliography: bibliography.bib
 vignette: >
   \usepackage[utf8]{inputenc}
   %\VignetteEngine{knitr::rmarkdown}
@@ -43,9 +43,9 @@ library(mrbsizeR)
 
 # Introduction
 
-`mrbsizeR` is an **R** package based on the MRBSiZer method by \cite{holmstrom2011}. The name is an abbreviation for **M**ulti**R**esolution **B**ayesian **SI**gnificant **ZE**ro crossings of derivatives in **R** and the method extends the portfolio of Bayesian SiZer methods for images and spatial fields, originally introduced by \cite{erasto2005}.  
+`mrbsizeR` is an **R** package based on the MRBSiZer method by @holmstrom2011. The name is an abbreviation for **M**ulti**R**esolution **B**ayesian **SI**gnificant **ZE**ro crossings of derivatives in **R** and the method extends the portfolio of Bayesian SiZer methods for images and spatial fields, originally introduced by @erasto2005.
 
-In the analysis of spatial fields or images (i.e. an object), scale space methods are often useful. When observed on different scales, distinct features of the object can be detected. Imagine the concept of a branch of a tree \citep{lindeberg1994}: This concept makes sense on a scale from a few centimeters to a few meters. On a much smaller scale, one could describe the molecules that form the branch and on a much larger scale, it would be possible to describe the forest the tree grows in. The goal in scale space analysis is therefore to represent an object on different scales, and this is done by dividing it into a family of smooths. The smooths are made on different smoothing levels and each smooth provides information relevant at a particular scale, which makes it possible to extract scale-dependent features from the object.
+In the analysis of spatial fields or images (i.e. an object), scale space methods are often useful. When observed on different scales, distinct features of the object can be detected. Imagine the concept of a branch of a tree (@lindeberg1994): This concept makes sense on a scale from a few centimeters to a few meters. On a much smaller scale, one could describe the molecules that form the branch and on a much larger scale, it would be possible to describe the forest the tree grows in. The goal in scale space analysis is therefore to represent an object on different scales, and this is done by dividing it into a family of smooths. The smooths are made on different smoothing levels and each smooth provides information relevant at a particular scale, which makes it possible to extract scale-dependent features from the object.
 
 Significant Zero Crossings of Derivatives (SiZer) is a method based on scale space ideas and has originally been developed for smooths of curves and time series. The goal is to find out whether a certain feature of the curve is "really there" or if it is just a sampling artifact. For curves and time series this is usually done by investigating the significance of the increases and decreases of the derivatives. Within the last years, this concept has been extended to various directions. 
 
@@ -58,7 +58,7 @@ For data on a regular grid, one can summarize the analysis procedure in three st
 \item Posterior credibility analysis of the differences of smooths
 \end{enumerate}
 
-For spherical data, no Bayesian signal reconstruction is implemented. The analysis procedure for this type of data therefore consists of the forming of scale-dependent details and the subsequent credibility analysis. The single steps and their application in `mrbsizeR` are explained by the following three examples. For further theory and algorithm details, see \cite{holmstrom2011} and \cite{schuster2017}. An extensive review of different statistical scale space methods including their applications is available in \cite{holmstrom2016}.
+For spherical data, no Bayesian signal reconstruction is implemented. The analysis procedure for this type of data therefore consists of the forming of scale-dependent details and the subsequent credibility analysis. The single steps and their application in `mrbsizeR` are explained by the following three examples. For further theory and algorithm details, see @holmstrom2011 and @schuster2017. An extensive review of different statistical scale space methods including their applications is available in @holmstrom2016.
 
 # Example: Data On A Regular Grid
 
@@ -101,11 +101,11 @@ image(tas.su.1995.MM5I$su, col = fields::tim.colors(), xaxt = 'n', yaxt = 'n', m
 
 ## Bayesian Signal Reconstruction
 
-The first step of the `mrbsizeR` analysis is the Bayesian signal reconstruction. The dataset is assumed to be a random signal which might be noisy. In order to account for this uncertainty in the data, a Bayesian model is used to reconstruct the original signal. The model used is 
+The first step of the `mrbsizeR` analysis is the Bayesian signal reconstruction. The data set is assumed to be a random signal which might be noisy. In order to account for this uncertainty in the data, a Bayesian model is used to reconstruct the original signal. The model used is 
 $$\boldsymbol{y} = \boldsymbol{x} + \boldsymbol{\varepsilon},$$
 where $\boldsymbol{y}$ is the observed random signal (compare Figures \ref{fig:plotdata} and \ref{fig:recdata}), $\boldsymbol{x}$ is the unobserved underlying original signal and $\boldsymbol{\epsilon}$ is the noise. A $\mathcal{N}$-Inv-$\chi^{2}$ prior distribution is assumed. In `mrbsizeR`, not the full posterior $p(\boldsymbol{x}, \sigma^{2}|\boldsymbol{y})$ is of interest, but the marginal posterior $p(\boldsymbol{x}|\boldsymbol{y})$. This marginal posterior follows a multivariate $t$-distribution $t_{\nu}$ and sampling from it results in samples from the reconstructed original signal $\boldsymbol{x}$.
 
-Depending on how much is known about the noise in $\boldsymbol{y}$, the prior distribution parameters can be adjusted. For the example of the surface air temperature, the parameters $\lambda_{0} = 0.2$, $\nu_{0} = 15$ and $\sigma_{0}^{2} = 36^2$ were used. This prior has little influence on the posterior as no information about possible noise on $\boldsymbol{y}$ is available. Using the function `rmvtDCT()`, samples from a $t_{\nu}$-distribution can be generated. The sampling algorithm uses a discrete cosine transform (DCT) to speed up computations. For further information on the distributions and the sampling algorithm, see \cite{holmstrom2011} and \cite{schuster2017}. 
+Depending on how much is known about the noise in $\boldsymbol{y}$, the prior distribution parameters can be adjusted. For the example of the surface air temperature, the parameters $\lambda_{0} = 0.2$, $\nu_{0} = 15$ and $\sigma_{0}^{2} = 36^2$ were used. This prior has little influence on the posterior as no information about possible noise on $\boldsymbol{y}$ is available. Using the function `rmvtDCT()`, samples from a $t_{\nu}$-distribution can be generated. The sampling algorithm uses a discrete cosine transform (DCT) to speed up computations. For further information on the distributions and the sampling algorithm, see @holmstrom2011 and @schuster2017.
 
 \ 
 ```{r Samples_t_dist1, echo = TRUE, eval = FALSE}
@@ -129,7 +129,7 @@ The first method for the smoothing level selection depends on the smoother imple
 - Small $\lambda$'s involve large eigenvalues of $\boldsymbol{Q}$.
 - Large $\lambda$'s involve small eigenvalues of $\boldsymbol{Q}$.
 
-The idea is to plot the tapering functions for different ranges of $\lambda$ so that the functions are approximately disjoint. When using these $\lambda$-ranges for calculating the differences of smooths, this will result in orthogonal detail components. For detailed information about the smoother used and the properties of the tapering functions, see \cite{holmstrom2011} and \cite{schuster2017}. 
+The idea is to plot the tapering functions for different ranges of $\lambda$ so that the functions are approximately disjoint. When using these $\lambda$-ranges for calculating the differences of smooths, this will result in orthogonal detail components. For detailed information about the smoother used and the properties of the tapering functions, see @holmstrom2011 and @schuster2017.
 
 The surface air temperature data was simulated on a 120-by-98 grid, and this information has to be passed to the plotting function `TaperingPlot()`. The vector `lambdaSmoother` contains the smoothing levels that should be used for drawing the tapering functions. 
 
@@ -182,7 +182,9 @@ tas.min.lambda.out <- MinLambda(Xmu = tas.post.samp$mu, mm = 120, nn = 98,
 load(system.file("/extdata", "tas.min.lambda.out.Rda", package = "mrbsizeR"))
 ```
  
-Most of the arguments of `MinLambda()` are already known from `TaperingPlot()`. In addition to this, it is necessary to specify `nGrid` (size of the grid the optimization should be carried out on, nGrid-by-nGrid), `nLambda` (either 2 or 3, number of $\lambda$'s to be optimized) and `sphere` (logical; is the analysis on spherical data?). The optimal $\lambda$ values evaluated for the surface air temperature data are 3.16e-11, 1e+02 and 1e+04.
+Most of the arguments of `MinLambda()` are already known from `TaperingPlot()`.
+In addition to this, it is necessary to specify `nGrid` (size of the grid the optimization should be carried out on, nGrid-by-nGrid), `nLambda` (either 2 or 3, number of $\lambda$'s to be optimized) and `sphere` (logical; is the analysis on spherical data?).
+The optimal $\lambda$ values evaluated for the surface air temperature data are 3.16e-11, 1e+02 and 1e+04.
 
 \ 
 ```{r objectivefunc3, echo=TRUE, eval=TRUE, results='markup'}
@@ -191,7 +193,9 @@ tas.min.lambda.out$lambda[tas.min.lambda.out$minind]
 ```
 \ 
 
-The minimization result can also be shown visually. For each optimized pair of $\lambda$'s, a plot is drawn. Figure \ref{fig:objectivefun4} shows the optimization for the surface air temperature example. The optimized $\lambda$'s have the indices $\lambda_{2}$, $\lambda_{3}$ and $\lambda_{4}$, because $\lambda_{1} = 0$ and $\lambda_{5} = \infty$.
+The minimization result can also be shown visually.
+For each optimized pair of $\lambda$'s, a plot is drawn. Figure \ref{fig:objectivefun4} shows the optimization for the surface air temperature example.
+The optimized $\lambda$'s have the indices $\lambda_{2}$, $\lambda_{3}$ and $\lambda_{4}$, because $\lambda_{1} = 0$ and $\lambda_{5} = \infty$.
 
 \ 
 ```{r objectivefunc4, echo=TRUE, eval=FALSE}
@@ -209,7 +213,12 @@ plot(x = tas.min.lambda.out)
 
 \pagebreak
 
-The smoothing levels found with the different methods can now be used as a starting point for finding scale-dependent details in the analyzed object. Usually, a few iterations with some smoothing level adjustments are necessary until the results found are satisfying. For the surface air temperature example, the smoothing level sequence $[\lambda_1, \lambda_2, \lambda_3, \lambda_4, \lambda_5] = [0, 0.1, 90, 16'000, \infty]$ turned out to be useful. Using `mrbsizeRgrid()`, differences of smooths at neighboring scales are created. For the surface air temperature example, the samples generated with `rmvtDCT()` are used as input. If other samples are already available and no Bayesian signal reconstruction is needed, it is important to store them as a matrix where each column vector represents one sample.
+The smoothing levels found with the different methods can now be used as a starting point for finding scale-dependent details in the analyzed object.
+Usually, a few iterations with some smoothing level adjustments are necessary until the results found are satisfying.
+For the surface air temperature example, the smoothing level sequence $[\lambda_1, \lambda_2, \lambda_3, \lambda_4, \lambda_5] = [0, 0.1, 90, 16'000, \infty]$ turned out to be useful.
+Using `mrbsizeRgrid()`, differences of smooths at neighboring scales are created.
+For the surface air temperature example, the samples generated with `rmvtDCT()` are used as input.
+If other samples are already available and no Bayesian signal reconstruction is needed, it is important to store them as a matrix where each column vector represents one sample.
 
 \ 
 ```{r mrbsizer1, echo=TRUE, eval=FALSE}
@@ -249,7 +258,7 @@ As the detail components $\boldsymbol{z}_{i}$ are random samples from the poster
 \pagebreak
 - **Simultaneous Credible Intervals (CI)**: Inference is also done jointly over all locations. Here, simultaneous credible intervals centered on the posterior means are calculated. CI maps flag locations as credible more conservatively than PW or HPW maps.
 
-For more detailed information about the three methods,  see \cite{holmstrom2011} and \cite{schuster2017}. By default, credible regions of all three methods are calculated when executing `mrbsizeRgrid()`. The corresponding lists in the output of `mrbsizeRgrid()` are `hpout` and `ciout`. 
+For more detailed information about the three methods,  see @holmstrom2011 and @schuster2017. By default, credible regions of all three methods are calculated when executing `mrbsizeRgrid()`. The corresponding lists in the output of `mrbsizeRgrid()` are `hpout` and `ciout`. 
 
 \ 
 ```{r pwmap1, echo=TRUE, eval=FALSE}
@@ -326,7 +335,7 @@ The `mrbsizeR` methodology was first implemented in the Matlab program MRBSiZer 
   \end{center}
 \end{figure}
 
-The detail components $\boldsymbol{z}_{i}$ are shown in Figure \ref{fig:smoothmean_sketch}. As the output of `mrbsizeRgrid()` is based on random samples, small differences between two executions are inevitable. When compared to the Matlab figures in \cite{holmstrom2011}, no big differences can be detected. More differences can be found in the HPW maps, especially in detail component $\boldsymbol{z}_{3}$ (compare Figure \ref{fig:hpwmap_sketch}). It seems that in the **R** implementation, a slightly larger part of the component was flagged as credible. Nevertheless, the detail components look very similar to their Matlab pendants and the interpretation of the results stays the same. The differences can be explained by random sampling and one can be confident that concordance across the systems holds. 
+The detail components $\boldsymbol{z}_{i}$ are shown in Figure \ref{fig:smoothmean_sketch}. As the output of `mrbsizeRgrid()` is based on random samples, small differences between two executions are inevitable. When compared to the Matlab figures in @holmstrom2011, no big differences can be detected. More differences can be found in the HPW maps, especially in detail component $\boldsymbol{z}_{3}$ (compare Figure \ref{fig:hpwmap_sketch}). It seems that in the **R** implementation, a slightly larger part of the component was flagged as credible. Nevertheless, the detail components look very similar to their Matlab pendants and the interpretation of the results stays the same. The differences can be explained by random sampling and one can be confident that concordance across the systems holds. 
 
 \begin{figure}[ht]
   \begin{center} 
@@ -347,7 +356,7 @@ The third example in this vignette demonstrates how `mrbsizeR` can be used to an
 \item Posterior credibility analysis of the differences of smooths
 \end{enumerate}
 
-Data from the Community Climate System Model 4.0 (CCSM4, see <http://www.cesm.ucar.edu/models/ccsm4.0/ccsm/>) is used to illustrate `mrbsizeR` on spherical data. CCSM4 is a climate model simulating the earth's climate system, see \cite{gent2011}. For this analysis, the simulated surface air temperature in June of the years 1870--2100 was considered. Instead of using the surface air temperature itself, its deviation to the yearly mean has been used. This detrends the data and makes the simulations of 231 consecutive years comparable. The resulting data set consisting of 231 observations is then used as samples for the `mrbsizeR` analysis. The data is not part of the `mrbsizeR` package. 
+Data from the Community Climate System Model 4.0 (CCSM4, see <http://www.cesm.ucar.edu/models/ccsm4.0/ccsm/>) is used to illustrate `mrbsizeR` on spherical data. CCSM4 is a climate model simulating the earth's climate system, see @gent2011. For this analysis, the simulated surface air temperature in June of the years 1870--2100 was considered. Instead of using the surface air temperature itself, its deviation to the yearly mean has been used. This detrends the data and makes the simulations of 231 consecutive years comparable. The resulting data set consisting of 231 observations is then used as samples for the `mrbsizeR` analysis. The data is not part of the `mrbsizeR` package. 
 
 Figure \ref{fig:spherical1} summarizes the samples by their mean. It is clearly visible that the temperature is higher in areas around the equator and gets lower closer to the Polar Regions. The unit of the surface air temperature deviation is degrees Kelvin. 
 
@@ -480,4 +489,3 @@ We wish to thank the North American Regional Climate Change Assessment Program (
 We acknowledge the World Climate Research Program’s Working Group on Coupled Modelling, which is responsible for CMIP, and we thank the climate modeling groups for producing and making available their model output. For CMIP the U.S. Department of Energy’s Program for Climate Model Diagnosis and Intercomparison provides coordinating support and led development of software infrastructure in partnership with the Global Organization for Earth System Science Portals.
 
 # References
-

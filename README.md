@@ -2,9 +2,12 @@
 
 ## Installation
 
-You can install mrbsizeR from github with:
+The preferred way to install mrbsizeR from CRAN is:
+``` r
+install.packages("mrbsizeR")
+```
 
-
+You can install the mrbsizeR devel version from github with:
 ``` r
 # install.packages("devtools")
 devtools::install_github("romanflury/mrbsizeR")
