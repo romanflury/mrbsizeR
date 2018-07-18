@@ -2,7 +2,7 @@
 title: "`mrbsizeR`: Scale space multiresolution analysis in R"
 author: "Thimo Schuster, Roman Flury"
 output:
-  rmarkdown::html_document:
+  rmarkdown::pdf_document:
     fig_caption: yes
     number_sections: true
     toc: true
