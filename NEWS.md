@@ -1,12 +1,18 @@
 # mrbsizeR 1.1.2.9000
 
-* modifications for pkgdown website
+## Internal
+
+* Modifications for pkgdown website.
+
+## Minor bug fixes and improvements
+
+* MinLambda(): adjusted grid size, for a user defined sequence of lambdas.
 
 # mrbsizeR 1.1.1
 
-* adressing Solaris compiler error in rcpp_dctmatrix.cpp
+* Adressing Solaris compiler error in rcpp_dctmatrix.cpp.
 
 # mrbsizeR 1.1.0
 
-* new maintainer Roman Flury
-* dctmmatrix and eigenLaplace via rcpp
+* New maintainer Roman Flury.
+* dctmmatrix() and eigenLaplace() via rcpp.

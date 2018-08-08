@@ -80,7 +80,7 @@ MinLambda <- function(Xmu, mm, nn, nGrid, nLambda = 2, lambda, sphere = FALSE){
 
   minimum <- 10^11
   if (identical(nLambda, 2) | identical(nLambda, 3)) {
-    G <- array(NA, c(rep(nGrid, nLambda)))
+    G <- array(NA, c(rep(length(lambda), nLambda)))
   } else{
     stop("Optimization can only be done over 2 or 3 lambdas")
   }
