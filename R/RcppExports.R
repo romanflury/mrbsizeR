@@ -33,3 +33,15 @@ for_eigenLaplace <- function(mu, lambda, mm, nn) {
     .Call(`_mrbsizeR_for_eigenLaplace`, mu, lambda, mm, nn)
 }
 
+initLambdaMat <- function(nGrid, N, lambda, fac, D) {
+    .Call(`_mrbsizeR_initLambdaMat`, nGrid, N, lambda, fac, D)
+}
+
+min2Lambda <- function(nGrid, LambdaMat, lambda1, minimum) {
+    .Call(`_mrbsizeR_min2Lambda`, nGrid, LambdaMat, lambda1, minimum)
+}
+
+min3Lambda <- function(i, nGrid, LambdaMat, lambda1, lambda2, minimum) {
+    .Call(`_mrbsizeR_min3Lambda`, i, nGrid, LambdaMat, lambda1, lambda2, minimum)
+}
+

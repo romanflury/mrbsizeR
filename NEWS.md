@@ -2,6 +2,7 @@
 
 ## Internal
 
+* MinLambda(): loops in rcpp.
 * Modifications for pkgdown website.
 
 ## Minor bug fixes and improvements

@@ -30,10 +30,58 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// initLambdaMat
+NumericMatrix initLambdaMat(int nGrid, int N, NumericVector lambda, NumericVector fac, NumericVector D);
+RcppExport SEXP _mrbsizeR_initLambdaMat(SEXP nGridSEXP, SEXP NSEXP, SEXP lambdaSEXP, SEXP facSEXP, SEXP DSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type nGrid(nGridSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type fac(facSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type D(DSEXP);
+    rcpp_result_gen = Rcpp::wrap(initLambdaMat(nGrid, N, lambda, fac, D));
+    return rcpp_result_gen;
+END_RCPP
+}
+// min2Lambda
+List min2Lambda(int nGrid, NumericMatrix LambdaMat, NumericVector lambda1, double minimum);
+RcppExport SEXP _mrbsizeR_min2Lambda(SEXP nGridSEXP, SEXP LambdaMatSEXP, SEXP lambda1SEXP, SEXP minimumSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type nGrid(nGridSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type LambdaMat(LambdaMatSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda1(lambda1SEXP);
+    Rcpp::traits::input_parameter< double >::type minimum(minimumSEXP);
+    rcpp_result_gen = Rcpp::wrap(min2Lambda(nGrid, LambdaMat, lambda1, minimum));
+    return rcpp_result_gen;
+END_RCPP
+}
+// min3Lambda
+List min3Lambda(int i, int nGrid, NumericMatrix LambdaMat, NumericVector lambda1, NumericVector lambda2, double minimum);
+RcppExport SEXP _mrbsizeR_min3Lambda(SEXP iSEXP, SEXP nGridSEXP, SEXP LambdaMatSEXP, SEXP lambda1SEXP, SEXP lambda2SEXP, SEXP minimumSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type i(iSEXP);
+    Rcpp::traits::input_parameter< int >::type nGrid(nGridSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type LambdaMat(LambdaMatSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda1(lambda1SEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda2(lambda2SEXP);
+    Rcpp::traits::input_parameter< double >::type minimum(minimumSEXP);
+    rcpp_result_gen = Rcpp::wrap(min3Lambda(i, nGrid, LambdaMat, lambda1, lambda2, minimum));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_mrbsizeR_dctMatrix", (DL_FUNC) &_mrbsizeR_dctMatrix, 1},
     {"_mrbsizeR_for_eigenLaplace", (DL_FUNC) &_mrbsizeR_for_eigenLaplace, 4},
+    {"_mrbsizeR_initLambdaMat", (DL_FUNC) &_mrbsizeR_initLambdaMat, 5},
+    {"_mrbsizeR_min2Lambda", (DL_FUNC) &_mrbsizeR_min2Lambda, 4},
+    {"_mrbsizeR_min3Lambda", (DL_FUNC) &_mrbsizeR_min3Lambda, 6},
     {NULL, NULL, 0}
 };
 

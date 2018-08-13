@@ -1,6 +1,6 @@
 Package: mrbsizeR
 Type: Package
-Title: Scale Space Multiresolution Analysis of Random Signals 
+Title: Scale Space Multiresolution Analysis of Random Signals
 Version: 1.1.2.9000
 Date: 2018-05-02
 Author: Thimo Schuster [aut],
@@ -20,7 +20,7 @@ Description: A method for the multiresolution analysis of spatial fields and ima
     (2) Using differences of smooths, scale-dependent features of the reconstructed signal can be found.
     (3) Posterior credibility analysis of the differences of smooths created.
     The method has first been proposed by Holmstrom, Pasanen, Furrer, Sain (2011) <DOI:10.1016/j.csda.2011.04.011>.
-    Matlab code is available under http://cc.oulu.fi/~lpasanen/MRBSiZer/.
+    Matlab code is available under <http://cc.oulu.fi/~lpasanen/MRBSiZer/>.
 License: GPL-2
 LazyData: TRUE
 Depends:
@@ -34,7 +34,7 @@ Imports:
     methods(>= 3.0.0),
     Rcpp (>= 0.12.14)
 LinkingTo: Rcpp
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Suggests: knitr,
     rmarkdown,
     testthat

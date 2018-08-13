@@ -13,7 +13,8 @@ MinLambda(Xmu, mm, nn, nGrid, nLambda = 2, lambda, sphere = FALSE)
 
 \item{nn}{Number of columns of the original input object.}
 
-\item{nGrid}{Size of grid where objective function is evaluated (nGrid-by-nGrid).}
+\item{nGrid}{Size of grid where objective function is evaluated (nGrid-by-nGrid).
+This argument is ignorded if a sequence \code{lambda} is specified.}
 
 \item{nLambda}{Number of lambdas to minimize over. Possible arguments: 2 (default) or 3.}
 

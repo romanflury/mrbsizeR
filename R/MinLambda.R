@@ -26,6 +26,7 @@
 #' @param mm Number of rows of the original input object.
 #' @param nn Number of columns of the original input object.
 #' @param nGrid Size of grid where objective function is evaluated (nGrid-by-nGrid).
+#' This argument is ignorded if a sequence \code{lambda} is specified.
 #' @param nLambda Number of lambdas to minimize over. Possible arguments: 2 (default) or 3. 
 #' @param lambda \eqn{\lambda}-sequence which is used for optimization. If nothing is provided, \cr
 #'     \code{lambda <- 10^seq(-3, 10, len = nGrid)} is used for data on a grid and \cr
@@ -61,7 +62,11 @@ MinLambda <- function(Xmu, mm, nn, nGrid, nLambda = 2, lambda, sphere = FALSE){
     eigMu <- eigenLaplace(mm, nn)
     D <- eigMu^2
     fac <- c(dctMatrix(mm) %*% matrix(Xmu, nrow = mm) %*% t(dctMatrix(nn)))
-    if (methods::hasArg(lambda) == FALSE) lambda <- 10^seq(-3, 10, len = nGrid)
+    if (methods::hasArg(lambda) == FALSE) {
+      lambda <- 10^seq(-3, 10, len = nGrid)
+    } else {
+      nGrid <- length(lambda)
+    }
   } else {
     eigOut <- eigenQsphere((180 / mm), (180 - 180 / mm), mm, nn)
     eigMu <- eigOut$eigval
@@ -71,7 +76,11 @@ MinLambda <- function(Xmu, mm, nn, nGrid, nLambda = 2, lambda, sphere = FALSE){
     D[1] <- 0
     eigVec <- eigVec[ , indx]
     fac <- c(t(Xmu) %*% eigVec)
-    if (methods::hasArg(lambda) == FALSE) lambda <- 10^seq(-6, 1, len = nGrid)
+    if (methods::hasArg(lambda) == FALSE) {
+      lambda <- 10^seq(-6, 1, len = nGrid)
+    } else {
+      nGrid <- length(lambda)
+    }
   }
 
   #---------- Initiating variables ---------------------------------------#
@@ -86,87 +95,40 @@ MinLambda <- function(Xmu, mm, nn, nGrid, nLambda = 2, lambda, sphere = FALSE){
   }
   lambda1 <- fac
   lambda1[1] <- 0
-  LambdaMat <- matrix(0, nrow = N, ncol = nGrid)
-
-  for (i in 1:nGrid) {
-    l1 <- lambda[i]
-    lambda2 <- fac / (1 + l1 * D)
-    lambda2[1] <- 0
-    LambdaMat[ ,i] <- lambda2
-  } 
-
+  LambdaMat <- initLambdaMat(nGrid, N, lambda, fac, D)
 
   #--------- Computing the value of G on the grid for nLambda = 2 --------------#
   if (identical(nLambda, 2)) {
-   
-    for (i in 1:(nGrid-1)) {
-      lambda2 <- LambdaMat[ ,i]
-      
-      for (j in (i+1):nGrid) {
-        lambda3 <- LambdaMat[ ,j]
-        diff12 <- lambda1 - lambda2
-        diff12 <- diff12 / sqrt(sum(diff12 * diff12))
-        
-        diff23 <- lambda2 - lambda3
-        diff23 <- diff23 / sqrt(sum(diff23 * diff23))
-        
-        diff34 <- lambda3
-        diff34 <- diff34 / sqrt(sum(diff34 * diff34))
-                           
-        val <- abs(sum(diff12 * diff23)) + abs(sum(diff23 * diff34)) + 
-          abs(sum(diff12 * diff34))
-        
-        G[i, j] <- val
-        
-        if (val < minimum) {
-          minimum <- val
-          mini <- i
-          minj <- j
-        }
-      }
-    } 
-    minil <- lambda[mini]
-    minjl <- lambda[minj]
+    min2LambdaListoutput <- min2Lambda(nGrid, LambdaMat, lambda1, minimum)
+    G <- apply(min2LambdaListoutput$G, c(1,2), function(x) { if(identical(x, 0)) { x <- NA } else { x <- x}})
+
+    minil <- lambda[min2LambdaListoutput$mini]
+    minjl <- lambda[min2LambdaListoutput$minj]
     #--------- Computing the value of G on the grid for nLambda = 3 --------------#  
   } else {
-    
-    for (i in 1:(nGrid - 2)) {
-      lambda2 <- LambdaMat[ ,i]
-      
-      for (j in (i + 1):(nGrid - 1)) {
-        lambda3 <- LambdaMat[ ,j]
-        
-        for (k in (j + 1):nGrid) {
-          lambda4 <- LambdaMat[ ,k]
-          
-          diff12 <- lambda1 - lambda2
-          diff12 <- diff12 / sqrt(sum(diff12 * diff12))
-          
-          diff23 <- lambda2 - lambda3
-          diff23 <- diff23 / sqrt(sum(diff23 * diff23))
-          
-          diff34 <- lambda3 - lambda4
-          diff34 <- diff34 / sqrt(sum(diff34 * diff34))
-          
-          diff45 <- lambda4
-          diff45 <- diff45 / sqrt(sum(diff45 * diff45))
-          
-          val <- abs(sum(diff12 * diff23)) + abs(sum(diff12 * diff34)) + 
-            abs(sum(diff12 * diff45)) + abs(sum(diff23 * diff34)) + 
-            abs(sum(diff23 * diff45)) + abs(sum(diff34 * diff45))
-          
-          G[i, j, k] <- val
-          
-          if (val < minimum) {
-            minimum <- val
-            mini <- i
-            minj <- j
-            mink <- k
-          }
-        }
+
+    tmp <- sapply(0:(nGrid-2), function(i) {
+      lambda2 <- LambdaMat[ ,i+1]
+      min3LambaListoutput <- min3Lambda(i, nGrid, LambdaMat, lambda1, lambda2, minimum)
+      if (min3LambaListoutput$minimum < minimum) {
+        minimum <- min3LambaListoutput$minimum
+        mini <- min3LambaListoutput$mini
+        minj <- min3LambaListoutput$minj
+        mink <- min3LambaListoutput$mink
       }
+
+      return(list(Gtmp = min3LambaListoutput$G, mini = min3LambaListoutput$mini, minj = min3LambaListoutput$minj, mink = min3LambaListoutput$mink))
+    })
+
+    for(i in 1:(nGrid-2)) {
+      G[i, , ] <- apply(tmp[,i]$Gtmp, c(1,2), function(x) { if(identical(x, 0)) { x <- NA } else { x <- x}})
     }
-  } 
+
+    minil <- lambda[tmp$mini]
+    minjl <- lambda[tmp$minj]
+    minkl <- lambda[tmp$mink]
+  }
+
   minlamout <- list(G = G, lambda = lambda, 
                     minind = which(G == min(G, na.rm = TRUE), arr.ind = TRUE))
   class(minlamout) <- append(class(minlamout), "minLambda")
