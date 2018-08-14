@@ -65,6 +65,7 @@ MinLambda <- function(Xmu, mm, nn, nGrid, nLambda = 2, lambda, sphere = FALSE){
     if (methods::hasArg(lambda) == FALSE) {
       lambda <- 10^seq(-3, 10, len = nGrid)
     } else {
+      lambda <- unique(lambda)
       nGrid <- length(lambda)
     }
   } else {
@@ -79,6 +80,7 @@ MinLambda <- function(Xmu, mm, nn, nGrid, nLambda = 2, lambda, sphere = FALSE){
     if (methods::hasArg(lambda) == FALSE) {
       lambda <- 10^seq(-6, 1, len = nGrid)
     } else {
+      lambda <- unique(lambda)
       nGrid <- length(lambda)
     }
   }
