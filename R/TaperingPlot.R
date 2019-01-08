@@ -28,6 +28,7 @@
 #' @param mm Number of rows of the original input object.
 #' @param nn Number of columns of the original input object.
 #' @param Xmu If availabe, posterior mean of the input object.
+#' @param returnseq instead of plotting return the tapering sequences.
 #' @param ... Further graphical parameters can be passed.
 #' @return Plots of the tapering functions for all differences of smooths
 #'     at neighboring scales are created.
@@ -47,7 +48,7 @@
 #'              Xmu = xmuExample)
 #'
 #'
-TaperingPlot <- function(lambdaSmoother, mm, nn, Xmu, ...){
+TaperingPlot <- function(lambdaSmoother, mm, nn, Xmu, returnseq = FALSE, ...){
 
   #---------- Initiating variables --------------------------#
 
@@ -102,6 +103,9 @@ TaperingPlot <- function(lambdaSmoother, mm, nn, Xmu, ...){
     }
   }
 
+  if (returnseq) {
+    return(diff)
+  }
 
   # Plot all tapering functions except of the last one
   for (i in 1:lenL){

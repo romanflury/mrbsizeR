@@ -4,7 +4,7 @@
 \alias{TaperingPlot}
 \title{Plot of tapering functions.}
 \usage{
-TaperingPlot(lambdaSmoother, mm, nn, Xmu, ...)
+TaperingPlot(lambdaSmoother, mm, nn, Xmu, returnseq = FALSE, ...)
 }
 \arguments{
 \item{lambdaSmoother}{Vector consisting of the smoothing levels to be used.}
@@ -14,6 +14,8 @@ TaperingPlot(lambdaSmoother, mm, nn, Xmu, ...)
 \item{nn}{Number of columns of the original input object.}
 
 \item{Xmu}{If availabe, posterior mean of the input object.}
+
+\item{returnseq}{instead of plotting return the tapering sequences.}
 
 \item{...}{Further graphical parameters can be passed.}
 }
