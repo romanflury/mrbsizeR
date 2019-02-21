@@ -20,4 +20,4 @@
 # mrbsizeR 1.1.0
 
 * New maintainer Roman Flury.
-* `dctmmatrix()` and `eigenLaplace()` via rcpp.
+* `dctMatrix()` and `eigenLaplace()` via rcpp.
