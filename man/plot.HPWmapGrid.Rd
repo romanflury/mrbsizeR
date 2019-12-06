@@ -15,16 +15,16 @@ probabilities of all differences of smooths.}
 \item{plotWhich}{Which probabilities shall be plotted? \code{HPW}, \code{PW}
 or \code{Both}?}
 
-\item{color}{Vector of length 3 containing the colors to be used in the 
-credibility maps. The first color represents the credibly negative pixels, 
+\item{color}{Vector of length 3 containing the colors to be used in the
+credibility maps. The first color represents the credibly negative pixels,
 the second color the pixels that are not credibly different from zero
 and the third color the credibly positive pixels.}
 
-\item{turnOut}{Logical. Should the output images be turned 90 degrees 
+\item{turnOut}{Logical. Should the output images be turned 90 degrees
 counter-clockwise?}
 
-\item{title}{Vector containing one string per plot. The required 
-number of titles is equal to \code{length(mrbOut$hpout)}. If no \code{title} 
+\item{title}{Vector containing one string per plot. The required
+number of titles is equal to \code{length(mrbOut$hpout)}. If no \code{title}
 is passed, defaults are used.}
 
 \item{aspRatio}{Adjust the aspect ratio of the plots. The default \code{aspRatio = 1}
@@ -37,7 +37,7 @@ Plots of pointwise and/or highest pointwise probabilities for all
     differences of smooths are created.
 }
 \description{
-Maps with pointwise (PW) probabilities and/or highest pointwise (HPW) 
+Maps with pointwise (PW) probabilities and/or highest pointwise (HPW)
 probabilities of all differences of smooths at neighboring scales are plotted.
 }
 \details{
@@ -58,14 +58,14 @@ sampleData[4:6, 6:8] <- sampleData[4:6, 6:8] + 5
 
 # Generate samples from multivariate t-distribution
 tSamp <- rmvtDCT(object = sampleData, lambda = 0.2, sigma = 6, nu0 = 15,
-                   ns = 1000)  
- 
+                   ns = 1000)
+
 # mrbsizeRgrid analysis
-mrbOut <- mrbsizeRgrid(posteriorFile = tSamp$sample, mm = 10, nn = 10, 
+mrbOut <- mrbsizeRgrid(posteriorFile = tSamp$sample, mm = 10, nn = 10,
                        lambdaSmoother = c(1, 1000), prob = 0.95)
 
 # Posterior mean of the differences of smooths
-plot(x = mrbOut$smMean, turnOut = TRUE)                    
+plot(x = mrbOut$smMean, turnOut = TRUE)
 
 # Credibility analysis using pointwise (PW) maps
 plot(x = mrbOut$hpout, plotWhich = "PW", turnOut = TRUE)

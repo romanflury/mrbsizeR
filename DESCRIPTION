@@ -1,8 +1,8 @@
 Package: mrbsizeR
 Type: Package
 Title: Scale Space Multiresolution Analysis of Random Signals
-Version: 1.1.2.9000
-Date: 2019-01-08
+Version: 1.2
+Date: 2019-12-04
 Authors@R: c(
     person("Thimo", "Schuster", email = "thimo.schuster@gmail.com", role = c("aut")),
     person("Roman", "Flury", email = "roman.flury@math.uzh.ch", role = c("cre", "aut")),

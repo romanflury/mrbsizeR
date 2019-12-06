@@ -12,8 +12,8 @@ header-includes:
    - \usepackage{bm}
    - \usepackage{setspace}\onehalfspacing
    - \usepackage[labelfont=bf]{caption}
-   - \setcitestyle{round}
    - \usepackage{color}
+   - \usepackage{natbib}
    - \definecolor{Red}{rgb}{0.7,0,0}
    - \definecolor{Blue}{rgb}{0,0,0.8}
    - \usepackage{hyperref}

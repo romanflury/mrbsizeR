@@ -1,4 +1,4 @@
-# mrbsizeR 1.1.2.9000
+# mrbsizeR 1.2
 
 ## Significant user-visible changes
 
@@ -11,6 +11,7 @@
 
 ## Minor bug fixes and improvements
 
+* adjusting mrbsizeR vignette to adress pandoc2.8 warning.
 * `MinLambda()`: adjusted grid size, for a user defined sequence of lambdas.
 
 # mrbsizeR 1.1.1
