@@ -174,7 +174,7 @@ A more formal approach is the numerical optimization of a suitable objective fun
 ```{r objectivefunc1, echo=TRUE, eval=FALSE}
 # Minimization of objective function with respect to the smoothing parameters
 tas.min.lambda.out <- MinLambda(Xmu = tas.post.samp$mu, mm = 120, nn = 98, 
-                                nGrid = 45, nLambda = 3, sphere = FALSE, 
+                                nLambda = 3, sphere = FALSE, 
                                 lambda=10^seq(-12, 10, len = 45))
 ```
 \ 
