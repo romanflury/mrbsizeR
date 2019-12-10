@@ -90,9 +90,9 @@ eigenQsphere <- function(phimin, phimax, mm, nn) {
 
     if ((j - i) == 2) {
       if (is.complex(eigV[ , j]) == FALSE) {
-        eigV[ , i] <- eigVc[ , i] / sqrt(t(eigVc[ , i]) %*% eigVc[ , i])
+        eigV[ , i] <- eigVc[ , i] / c(sqrt(t(eigVc[ , i]) %*% eigVc[ , i]))
       } else {
-        eigV[ , j] <- eigVc[ , j] / sqrt(t(eigVc[ , j]) %*% eigVc[ , j])
+        eigV[ , j] <- eigVc[ , j] / c(sqrt(t(eigVc[ , j]) %*% eigVc[ , j]))
       }
     } else if ((j - i) > 2) {
         ei2[ , ind] <- c(i, j)
@@ -126,7 +126,7 @@ eigenQsphere <- function(phimin, phimax, mm, nn) {
   }
 
   for (i in 1:(nn * mm)) {
-    eigV[ , i] <- eigV[ , i] / sqrt(t(eigV[ , i]) %*% eigV[ , i])
+    eigV[ , i] <- eigV[ , i] / c(sqrt(t(eigV[ , i]) %*% eigV[ , i]))
   }
 
   return(list(eigval = eigval, eigvec = eigV))
