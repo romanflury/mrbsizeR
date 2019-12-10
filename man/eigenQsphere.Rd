@@ -16,14 +16,14 @@ eigenQsphere(phimin, phimax, mm, nn)
 \item{nn}{Number of columns of precision matrix Q.}
 }
 \value{
-A list containing 2 elements: 
+A list containing 2 elements:
 \itemize{
-    \item eigval Row vector containing the eigenvalues of Q. 
-    \item eigvec Matrix containing the eigenvectors of Q as columns. 
+    \item eigval Row vector containing the eigenvalues of Q.
+    \item eigvec Matrix containing the eigenvectors of Q as columns.
 }
 }
 \description{
-The eigenvalues of the precision matrix Q with dimension (\code{mm}, \code{nn}) 
+The eigenvalues of the precision matrix Q with dimension (\code{mm}, \code{nn})
 and polar angle limits \code{phimin}, \code{phimax} are calculated.
 }
 \details{

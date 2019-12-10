@@ -18,7 +18,7 @@ NumericVector for_eigenLaplace(NumericVector mu, NumericVector lambda, int mm, i
 // [[Rcpp::export]]
 NumericMatrix initLambdaMat(int nGrid, int N, NumericVector lambda, NumericVector fac, NumericVector D) {
   NumericMatrix LambdaMat(N, nGrid);
-  int l1 = 0;
+  double l1 = 0;
   NumericVector lambda2(N);
 
   for (int i = 0; i < nGrid; i++) {
