@@ -4,8 +4,14 @@
 \alias{plot.CImapGrid}
 \title{Plot of simultaneous credible intervals.}
 \usage{
-\method{plot}{CImapGrid}(x, color = c("firebrick1", "gainsboro",
-  "dodgerblue3"), turnOut = TRUE, title, aspRatio = 1, ...)
+\method{plot}{CImapGrid}(
+  x,
+  color = c("firebrick1", "gainsboro", "dodgerblue3"),
+  turnOut = TRUE,
+  title,
+  aspRatio = 1,
+  ...
+)
 }
 \arguments{
 \item{x}{List containing the simultaneous credible intervals for all

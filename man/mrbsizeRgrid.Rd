@@ -4,8 +4,14 @@
 \alias{mrbsizeRgrid}
 \title{Multiresolution analysis of random signals.}
 \usage{
-mrbsizeRgrid(posteriorFile, mm, nn, lambdaSmoother, prob = 0.95,
-  smoothOut = FALSE)
+mrbsizeRgrid(
+  posteriorFile,
+  mm,
+  nn,
+  lambdaSmoother,
+  prob = 0.95,
+  smoothOut = FALSE
+)
 }
 \arguments{
 \item{posteriorFile}{Matrix with posterior samples as column vectors.}

@@ -1,6 +1,7 @@
 title: mrbsizeR
-url: http://https://romanflury.github.io/mrbsizeR/
+url: https://romanflury.github.io/mrbsizeR/
 template:
+  bootstrap: 5
   params:
     bootswatch: yeti
     ganalytics: UA-118890730-1
@@ -18,10 +19,8 @@ reference:
       - '`eigenQsphere`'
       - '`fftshift`'
       - '`ifftshift`'
-      - '`mrbsizeR`'
       - '`mrbsizeRgrid`'
       - '`mrbsizeRsphere`'
-      - '`mrbsizer-package`'
       - '`rmvtDCT`'
       - '`tridiag`'
       - '`turnmat`'
@@ -40,6 +39,7 @@ navbar:
   left:
     - icon: fa-home
       href: index.html
+      aria-label: Home
     - text: "Vignette"
       href: articles/mrbsizeR.html
     - text: "Reference"
@@ -50,6 +50,4 @@ navbar:
     - icon: fa-lg fa-github
       text: "github"
       href: https://github.com/romanflury/mrbsizeR
-    - icon: fa-lg fa-twitter
-      text: "twitter"
-      href: http://twitter.com/fluryro
+      aria-label: GitHub

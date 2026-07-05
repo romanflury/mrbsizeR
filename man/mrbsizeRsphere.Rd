@@ -4,8 +4,14 @@
 \alias{mrbsizeRsphere}
 \title{Multiresolution analysis of random signals for spherical data.}
 \usage{
-mrbsizeRsphere(posteriorFile, mm, nn, lambdaSmoother, prob = 0.95,
-  smoothOut = FALSE)
+mrbsizeRsphere(
+  posteriorFile,
+  mm,
+  nn,
+  lambdaSmoother,
+  prob = 0.95,
+  smoothOut = FALSE
+)
 }
 \arguments{
 \item{posteriorFile}{Matrix with posterior samples as column vectors.}
@@ -45,7 +51,7 @@ and \code{\link{plot.HPWmapSphere}}.
 \details{
 In contrast to \code{mrbsizeRgrid}, \code{mrbsizeRsphere} does not conduct 
 Bayesian signal reconstruction via sampling from a posterior distribution. 
-Samples of the posterior distribution have to be provided instead.
+Samples of the posterior distribution have to be provided instead. 
 
 For further information and examples, see \code{\link{mrbsizeRgrid}} and 
 the vignette.

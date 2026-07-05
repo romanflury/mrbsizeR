@@ -43,15 +43,15 @@ than visual inspection via the signal-dependent tapering function in \code{\link
 As signal-dependent tapering functions are quiet irregular, it is hard to 
 find appropriate smoothing values only by visual inspection of the tapering
 function plot. A more formal approach is the numerical optimization of an 
-objective function.
+objective function. 
 
 Optimization can be carried out with 2 or 3 smoothing parameters. As the 
 smoothing parameters 0 and \eqn{\infty} are always added, this results
-in a mrbsizeR analysis with 4 or 5 smoothing parameters.
+in a mrbsizeR analysis with 4 or 5 smoothing parameters. 
 
 Sometimes, not all features of the input object can be extracted using the 
 smoothing levels proposed by \code{MinLambda}. It might then be necessary to
-include additional smoothing levels.
+include additional smoothing levels. 
 
 \code{\link{plot.minLambda}} creates a plot of the objective function \eqn{G} 
 on a grid. The minimum is indicated with a white point. The minimum values of 

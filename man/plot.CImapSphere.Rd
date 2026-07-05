@@ -4,8 +4,15 @@
 \alias{plot.CImapSphere}
 \title{Plotting of simultaneous credible intervals on a sphere.}
 \usage{
-\method{plot}{CImapSphere}(x, lon, lat, color = c("firebrick1",
-  "gainsboro", "dodgerblue3"), turnOut = FALSE, title, ...)
+\method{plot}{CImapSphere}(
+  x,
+  lon,
+  lat,
+  color = c("firebrick1", "gainsboro", "dodgerblue3"),
+  turnOut = FALSE,
+  title,
+  ...
+)
 }
 \arguments{
 \item{x}{List containing the simultaneous credible intervals of all

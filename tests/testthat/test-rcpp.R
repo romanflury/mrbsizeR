@@ -127,14 +127,14 @@ test_that("compare previous min3Lambda loops and rcpp implementation", {
   D <- rnorm(N)
   LambdaMat <- matrix(0, nrow = N, ncol = nGrid)
   lambda <- 1:nGrid
-  
+
   for (i in 1:nGrid) {
     l1 <- lambda[i]
     lambda2 <- fac / (1 + l1 * D)
     lambda2[1] <- 0
     LambdaMat[ ,i] <- lambda2
   }
-  
+
   minimum <- 10^11
   nLambda <- 3
   G <- array(NA, c(rep(length(lambda), nLambda)))

@@ -38,5 +38,3 @@ plot(x = mrbOut$ciout, turn_out = TRUE)
 ```
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/mrbsizeR)](https://cran.r-project.org/package=mrbsizeR)
 [![](https://cranlogs.r-pkg.org/badges/mrbsizeR)](https://cran.r-project.org/package=mrbsizeR)
-[![Travis-CI Build Status](https://travis-ci.org/romanflury/mrbsizeR.svg?branch=master)](https://travis-ci.org/romanflury/mrbsizeR)
-

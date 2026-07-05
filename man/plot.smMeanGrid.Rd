@@ -4,8 +4,14 @@
 \alias{plot.smMeanGrid}
 \title{Plotting of scale-dependent features.}
 \usage{
-\method{plot}{smMeanGrid}(x, color.pallet = fields::tim.colors(),
-  turnOut = TRUE, title, aspRatio = 1, ...)
+\method{plot}{smMeanGrid}(
+  x,
+  color.pallet = fields::tim.colors(),
+  turnOut = TRUE,
+  title,
+  aspRatio = 1,
+  ...
+)
 }
 \arguments{
 \item{x}{List containing the posterior mean of all differences of smooths.}

@@ -4,9 +4,16 @@
 \alias{plot.HPWmapSphere}
 \title{Plotting of pointwise and highest pointwise probabilities on a sphere.}
 \usage{
-\method{plot}{HPWmapSphere}(x, lon, lat, plotWhich = "Both",
-  color = c("firebrick1", "gainsboro", "dodgerblue3"), turnOut = FALSE,
-  title, ...)
+\method{plot}{HPWmapSphere}(
+  x,
+  lon,
+  lat,
+  plotWhich = "Both",
+  color = c("firebrick1", "gainsboro", "dodgerblue3"),
+  turnOut = FALSE,
+  title,
+  ...
+)
 }
 \arguments{
 \item{x}{List containing the pointwise (PW) and highest pointwise (HPW)

@@ -4,8 +4,15 @@
 \alias{plot.smMeanSphere}
 \title{Plotting of scale-dependent features on a sphere.}
 \usage{
-\method{plot}{smMeanSphere}(x, lon, lat,
-  color.pallet = fields::tim.colors(), turnOut = TRUE, title, ...)
+\method{plot}{smMeanSphere}(
+  x,
+  lon,
+  lat,
+  color.pallet = fields::tim.colors(),
+  turnOut = TRUE,
+  title,
+  ...
+)
 }
 \arguments{
 \item{x}{List containing the posterior mean of all differences of smooths.}
