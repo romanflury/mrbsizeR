@@ -5,12 +5,14 @@
 The preferred way to install mrbsizeR from CRAN is:
 
 ``` r
+
 install.packages("mrbsizeR")
 ```
 
 You can install the mrbsizeR devel version from github with:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("romanflury/mrbsizeR")
 ```
@@ -18,6 +20,7 @@ devtools::install_github("romanflury/mrbsizeR")
 ## Example
 
 ``` r
+
 # Artificial sample data
 set.seed(987)
 sampleData <- matrix(stats::rnorm(100), nrow = 10)

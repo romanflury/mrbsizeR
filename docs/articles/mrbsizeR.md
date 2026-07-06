@@ -59,15 +59,15 @@ international program producing climate change simulations for Canada,
 the United States and northern Mexico. The data used for this example is
 based on the MM5I regional model and is a simulation of the surface air
 temperature during summer 1995 , see also
-<http://www2.mmm.ucar.edu/mm5/> and
-[http://www.narccap.ucar.edu/index.html](http://www.narccap.ucar.edu/index.md).
-The simulation was carried out on a 120-by-98 regular grid, therefore
-11’760 data points are available in total. The data set is not part of
-the `mrbsizeR` package.
+<https://www2.mmm.ucar.edu/mm5/> and
+<https://www.narccap.ucar.edu/index.html>. The simulation was carried
+out on a 120-by-98 regular grid, therefore 11’760 data points are
+available in total. The data set is not part of the `mrbsizeR` package.
 
  
 
 ``` r
+
 # Structure of the dataset 
 str(tas.su.1995.MM5I)
 #> List of 3
@@ -144,6 +144,7 @@ sampling algorithm, see Holmström et al. (2011) and Schuster (2017).
  
 
 ``` r
+
 # Sampling from a multivariate t-distribution
 tas.post.samp <- rmvtDCT(object = tas.su.1995.MM5I$su, 
                          lambda = 0.2, sigma = 36, nu0 = 15, ns = 1000)
@@ -208,6 +209,7 @@ used for drawing the tapering functions.
  
 
 ``` r
+
 # Plot of signal-independent tapering functions
 TaperingPlot(lambdaSmoother = c(1, 100, 10000), mm = 120, nn = 98)
 ```
@@ -231,6 +233,7 @@ is replaced by its posterior mean.
  
 
 ``` r
+
 # Plot of signal-dependent tapering functions
 TaperingPlot(lambdaSmoother = c(1, 100, 10000), 
              mm = 120, nn = 98, Xmu = tas.post.samp$mu)
@@ -266,6 +269,7 @@ sufficient in many cases.
  
 
 ``` r
+
 # Minimization of objective function with respect to the smoothing parameters
 tas.min.lambda.out <- MinLambda(Xmu = tas.post.samp$mu, mm = 120, nn = 98, 
                                 nLambda = 3, sphere = FALSE, 
@@ -288,6 +292,7 @@ $`\lambda`$ values evaluated for the surface air temperature data are
  
 
 ``` r
+
 # Minimal smoothing parameter values
 tas.min.lambda.out$lambda[tas.min.lambda.out$minind]
 #> [1] 3.16e-11 1.00e+02 1.00e+04
@@ -304,6 +309,7 @@ because $`\lambda_{1} = 0`$ and $`\lambda_{5} = \infty`$.
  
 
 ``` r
+
 # Plot of the minimization result
 plot(x = tas.min.lambda.out)
 ```
@@ -326,6 +332,7 @@ as a matrix where each column vector represents one sample.
  
 
 ``` r
+
 # Creation of differences of smooths at neighboring scales
 tas.mrb.out <- mrbsizeRgrid(posteriorFile = tas.post.samp$sample, mm = 120, nn = 98, 
                             lambdaSmoother = c(0.1, 90, 15000), prob = 0.95)
@@ -358,6 +365,7 @@ across the whole map.
  
 
 ``` r
+
 # Posterior mean of the different detail components
 plot(x = tas.mrb.out$smMean, color.pallet = fields::tim.colors(), turnOut = FALSE, 
      aspRatio = 98/120)
@@ -396,6 +404,7 @@ are `hpout` and `ciout`.
  
 
 ``` r
+
 # Plot of pointwise (PW) maps
 plot(x = tas.mrb.out$hpout, plot_which = "PW", aspRatio = 98/120,
      color = c("dodgerblue3", "gainsboro", "firebrick1"), turnOut = FALSE)
@@ -416,6 +425,7 @@ credible.
  
 
 ``` r
+
 # Plot of highest pointwise probability (HPW) maps
 plot(x = tas.mrb.out$hpout, plotWhich = "HPW", aspRatio = 98/120,
      color = c("dodgerblue3", "gainsboro", "firebrick1"), turnOut = FALSE)
@@ -429,6 +439,7 @@ small islands of credibility are less frequent.
  
 
 ``` r
+
 # Plot of simultaneous credible interval (CI) maps
 plot(x = tas.mrb.out$ciout, color = c("dodgerblue3", "gainsboro", "firebrick1"), 
      turnOut = FALSE, aspRatio = 98/120)
@@ -445,14 +456,12 @@ details, the interpretation of the results does not change.
 ## Example: Comparison to Matlab software
 
 The `mrbsizeR` methodology was first implemented in the Matlab program
-MRBSiZer , which is available at
-<http://cc.oulu.fi/~lpasanen/MRBSiZer/>. In order to ensure that the
-results obtained with R and Matlab are concordant, the sketch pad
-example from the original paper is reconstructed (compare Figure . The
-digital image is of the size 284-by-400 and the prior parameters
-$`\lambda_{0}`$, $`\sigma_{0}^{2}`$ and $`\nu_{0}`$ had the values
-$`0.2, 8.9^2`$ and $`10`$, respectively. The set of smoothing levels
-used in the multiresolution analysis was
+MRBSiZer . In order to ensure that the results obtained with R and
+Matlab are concordant, the sketch pad example from the original paper is
+reconstructed (compare Figure . The digital image is of the size
+284-by-400 and the prior parameters $`\lambda_{0}`$, $`\sigma_{0}^{2}`$
+and $`\nu_{0}`$ had the values $`0.2, 8.9^2`$ and $`10`$, respectively.
+The set of smoothing levels used in the multiresolution analysis was
 $`[0, 1, 30, 6 \times 10^5, \infty]`$. 3000 samples of the posterior
 $`p(\boldsymbol{x}|\boldsymbol{y})`$ were generated.
 
@@ -479,16 +488,16 @@ scale-dependent details, data samples need to be available beforehand.
 The analysis procedure for spherical data can therefore be summarized in
 two steps:
 
-Data from the Community Climate System Model 4.0 (CCSM4, see
-<http://www.cesm.ucar.edu/models/ccsm4.0/ccsm/>) is used to illustrate
-`mrbsizeR` on spherical data. CCSM4 is a climate model simulating the
-earth’s climate system, see Gent et al. (2011). For this analysis, the
-simulated surface air temperature in June of the years 1870–2100 was
-considered. Instead of using the surface air temperature itself, its
-deviation to the yearly mean has been used. This detrends the data and
-makes the simulations of 231 consecutive years comparable. The resulting
-data set consisting of 231 observations is then used as samples for the
-`mrbsizeR` analysis. The data is not part of the `mrbsizeR` package.
+Data from the Community Climate System Model 4.0 (CCSM4) is used to
+illustrate `mrbsizeR` on spherical data. CCSM4 is a climate model
+simulating the earth’s climate system, see Gent et al. (2011). For this
+analysis, the simulated surface air temperature in June of the years
+1870–2100 was considered. Instead of using the surface air temperature
+itself, its deviation to the yearly mean has been used. This detrends
+the data and makes the simulations of 231 consecutive years comparable.
+The resulting data set consisting of 231 observations is then used as
+samples for the `mrbsizeR` analysis. The data is not part of the
+`mrbsizeR` package.
 
 Figure summarizes the samples by their mean. It is clearly visible that
 the temperature is higher in areas around the equator and gets lower
@@ -516,6 +525,7 @@ has to be `TRUE`.
  
 
 ``` r
+
 # Minimization of objective function with respect to the smoothing parameters
 # for spherical data
 spherical.min.lambda.out <- MinLambda(Xmu = dat.ccsm4.mu, mm = 144, nn = 72, 
@@ -531,6 +541,7 @@ at neighboring scales can be created using the function
  
 
 ``` r
+
 # Creation of differences of smooths at neighboring scales for spherical data
 spherical.mrb.out <- mrbsizeRsphere(posteriorFile = dat.ccsm4, mm = 144, nn = 72,
                                     prob = 0.95, lambdaSmoother = c(0.0026))
@@ -551,6 +562,7 @@ Polar Regions. $`\boldsymbol{z}_{3}`$ shows the global mean.
  
 
 ``` r
+
 # Posterior mean of the different detail components for spherical data
 plot(x = spherical.mrb.out$smMean, lon = dat.ccsm4$lon, lat = dat.ccsm4$lat,
      color.pallet = fields::tim.colors())
@@ -571,6 +583,7 @@ always equals 0.
  
 
 ``` r
+
 # Plot of highest pointwise probability (HPW) maps for spherical data
 plot(x = spherical.mrb.out$hpout, lon = dat.ccsm4$lon, lat = dat.ccsm4$lat,    
      plotWhich = "HPW", color = c("dodgerblue3", "gainsboro", "firebrick1"))
@@ -594,6 +607,7 @@ example is provided in the following code chunk.
  
 
 ``` r
+
 # Generate samples from posterior distribution
 tas.post.samp <- rmvtDCT(object = tas.su.1995.MM5I$su, 
                          lambda = 0.2, sigma = 36, nu0 = 15, ns = 1000)
@@ -651,8 +665,7 @@ Erästö, Panu, and Lasse Holmström. 2005. “Bayesian Multiscale Smoothing
 for Making Inferences about Features in Scatterplots.” *Journal of
 Computational and Graphical Statistics* 14 (3): 569–89.
 
-Gent, Peter R., Gokhan Danabasoglu, Leo J. Donner, Marika M. Holland,
-Elizabeth C. Hunke, Steve R. Jayne, David M. Lawrence, et al. 2011. “The
+Gent, Peter R., Gokhan Danabasoglu, Leo J. Donner, et al. 2011. “The
 Community Climate System Model Version 4.” *Journal of Climate* 24:
 4973–91.
 

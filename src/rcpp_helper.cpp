@@ -35,7 +35,7 @@ List min2Lambda(int nGrid, NumericMatrix LambdaMat, NumericVector lambda1, doubl
   List ret;
 
   NumericVector lambda2, lambda3, diff12, diff23, diff34;
-  int mini, minj;
+  int mini = 0, minj = 0;
   double val;
   NumericMatrix G(nGrid, nGrid);
 
@@ -77,7 +77,7 @@ List min3Lambda(int i, int nGrid, NumericMatrix LambdaMat, NumericVector lambda1
   double val;
   NumericVector lambda3, lambda4, diff12, diff23, diff34, diff45;
 
-  int mini, minj, mink;
+  int mini = 0, minj = 0, mink = 0;
   NumericMatrix G(nGrid, nGrid);
 
   for (int j = (i+1); j < (nGrid - 1); j++) {

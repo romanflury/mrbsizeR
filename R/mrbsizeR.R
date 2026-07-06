@@ -33,8 +33,7 @@
 #'     \item Posterior credibility analysis of the differences of smooths created.
 #' }
 #'
-#' This method has first been proposed by Holmstrom, Pasanen, Furrer, Sain (2011),
-#' see also \cr http://cc.oulu.fi/~lpasanen/MRBSiZer/.
+#' This method has first been proposed by Holmstrom, Pasanen, Furrer, Sain (2011).
 #'
 #'
 #' \strong{Major Functions}
@@ -68,8 +67,7 @@
 #' \strong{References}
 #'
 #' \itemize{
-#'    \item Holmstrom, L. and Pasanen, L. (2011). MRBSiZer. http://cc.oulu.fi/~lpasanen/MRBSiZer/.
-#'    Accessed: 2017-03-04.
+#'    \item Holmstrom, L. and Pasanen, L. (2011). MRBSiZer.
 #'    \item Holmstrom, L., Pasanen, L., Furrer, R., and Sain, S. R. (2011).
 #'    Scale space multiresolution analysis of random signals.
 #'    Computational Statistics and Data Analysis, 55, 2840-2855.

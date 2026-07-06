@@ -62,7 +62,7 @@ For spherical data, no Bayesian signal reconstruction is implemented. The analys
 
 # Example: Data On A Regular Grid
 
-For the first example, data from the North American Regional Climate Change Assessment Program (NARCCAP) is analyzed. NARCCAP is an international program producing climate change simulations for Canada, the United States and northern Mexico. The data used for this example is based on the MM5I regional model \citep{narcapp2007} and is a simulation of the surface air temperature during summer 1995 \citep{narcapp2007}, see also <http://www2.mmm.ucar.edu/mm5/> and <http://www.narccap.ucar.edu/index.html>. The simulation was carried out on a 120-by-98 regular grid, therefore 11'760 data points are available in total. The data set is not part of the `mrbsizeR` package.
+For the first example, data from the North American Regional Climate Change Assessment Program (NARCCAP) is analyzed. NARCCAP is an international program producing climate change simulations for Canada, the United States and northern Mexico. The data used for this example is based on the MM5I regional model \citep{narcapp2007} and is a simulation of the surface air temperature during summer 1995 \citep{narcapp2007}, see also <https://www2.mmm.ucar.edu/mm5/> and <https://www.narccap.ucar.edu/index.html>. The simulation was carried out on a 120-by-98 regular grid, therefore 11'760 data points are available in total. The data set is not part of the `mrbsizeR` package.
 
 \ 
 ```{r strdata1, echo = FALSE, results = 'markup'}
@@ -316,7 +316,7 @@ Detail component $\boldsymbol{z}_{1}$ of the simultaneous credible interval maps
 
 # Example: Comparison to Matlab software
 
-The `mrbsizeR` methodology was first implemented in the Matlab program MRBSiZer \citep{holmstrom2011on}, which is available at <http://cc.oulu.fi/~lpasanen/MRBSiZer/>. In order to ensure that the results obtained with R and Matlab are concordant, the sketch pad example from the original paper \citep{holmstrom2011} is reconstructed (compare Figure \ref{fig:sketchpad}. The digital image is of the size 284-by-400 and the prior parameters $\lambda_{0}$, $\sigma_{0}^{2}$ and $\nu_{0}$ had the values $0.2, 8.9^2$ and $10$, respectively. The set of smoothing levels used in the multiresolution analysis was $[0, 1, 30, 6 \times 10^5, \infty]$. 3000 samples of the posterior $p(\boldsymbol{x}|\boldsymbol{y})$ were generated.
+The `mrbsizeR` methodology was first implemented in the Matlab program MRBSiZer \citep{holmstrom2011on}. In order to ensure that the results obtained with R and Matlab are concordant, the sketch pad example from the original paper \citep{holmstrom2011} is reconstructed (compare Figure \ref{fig:sketchpad}. The digital image is of the size 284-by-400 and the prior parameters $\lambda_{0}$, $\sigma_{0}^{2}$ and $\nu_{0}$ had the values $0.2, 8.9^2$ and $10$, respectively. The set of smoothing levels used in the multiresolution analysis was $[0, 1, 30, 6 \times 10^5, \infty]$. 3000 samples of the posterior $p(\boldsymbol{x}|\boldsymbol{y})$ were generated.
 
 \begin{figure}[ht]
   \begin{center} 
@@ -356,7 +356,7 @@ The third example in this vignette demonstrates how `mrbsizeR` can be used to an
 \item Posterior credibility analysis of the differences of smooths
 \end{enumerate}
 
-Data from the Community Climate System Model 4.0 (CCSM4, see <http://www.cesm.ucar.edu/models/ccsm4.0/ccsm/>) is used to illustrate `mrbsizeR` on spherical data. CCSM4 is a climate model simulating the earth's climate system, see @gent2011. For this analysis, the simulated surface air temperature in June of the years 1870--2100 was considered. Instead of using the surface air temperature itself, its deviation to the yearly mean has been used. This detrends the data and makes the simulations of 231 consecutive years comparable. The resulting data set consisting of 231 observations is then used as samples for the `mrbsizeR` analysis. The data is not part of the `mrbsizeR` package. 
+Data from the Community Climate System Model 4.0 (CCSM4) is used to illustrate `mrbsizeR` on spherical data. CCSM4 is a climate model simulating the earth's climate system, see @gent2011. For this analysis, the simulated surface air temperature in June of the years 1870--2100 was considered. Instead of using the surface air temperature itself, its deviation to the yearly mean has been used. This detrends the data and makes the simulations of 231 consecutive years comparable. The resulting data set consisting of 231 observations is then used as samples for the `mrbsizeR` analysis. The data is not part of the `mrbsizeR` package. 
 
 Figure \ref{fig:spherical1} summarizes the samples by their mean. It is clearly visible that the temperature is higher in areas around the equator and gets lower closer to the Polar Regions. The unit of the surface air temperature deviation is degrees Kelvin. 
 

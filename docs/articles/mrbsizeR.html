@@ -126,7 +126,7 @@ Change Assessment Program (NARCCAP) is analyzed. NARCCAP is an
 international program producing climate change simulations for Canada,
 the United States and northern Mexico. The data used for this example is
 based on the MM5I regional model and is a simulation of the surface air
-temperature during summer 1995 , see also <a href="http://www2.mmm.ucar.edu/mm5/" class="external-link uri">http://www2.mmm.ucar.edu/mm5/</a> and <a href="http://www.narccap.ucar.edu/index.html" class="external-link uri">http://www.narccap.ucar.edu/index.html</a>. The simulation
+temperature during summer 1995 , see also <a href="https://www2.mmm.ucar.edu/mm5/" class="external-link uri">https://www2.mmm.ucar.edu/mm5/</a> and <a href="https://www.narccap.ucar.edu/index.html" class="external-link uri">https://www.narccap.ucar.edu/index.html</a>. The simulation
 was carried out on a 120-by-98 regular grid, therefore 11’760 data
 points are available in total. The data set is not part of the
 <code>mrbsizeR</code> package.</p>
@@ -184,9 +184,9 @@ is the noise. A
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒩</mi><annotation encoding="application/x-tex">\mathcal{N}</annotation></semantics></math>-Inv-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>χ</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\chi^{2}</annotation></semantics></math>
 prior distribution is assumed. In <code>mrbsizeR</code>, not the full
 posterior
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><msup><mi>σ</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">|</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">p(\boldsymbol{x}, \sigma^{2}|\boldsymbol{y})</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><msup><mi>σ</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">|</mo><mi>𝐲</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">p(\boldsymbol{x}, \sigma^{2}|\boldsymbol{y})</annotation></semantics></math>
 is of interest, but the marginal posterior
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="prefix">|</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">p(\boldsymbol{x}|\boldsymbol{y})</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="prefix">|</mo><mi>𝐲</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">p(\boldsymbol{x}|\boldsymbol{y})</annotation></semantics></math>.
 This marginal posterior follows a multivariate
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>-distribution
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>ν</mi></msub><annotation encoding="application/x-tex">t_{\nu}</annotation></semantics></math>
@@ -388,7 +388,7 @@ as a starting point for finding scale-dependent details in the analyzed
 object. Usually, a few iterations with some smoothing level adjustments
 are necessary until the results found are satisfying. For the surface
 air temperature example, the smoothing level sequence
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>λ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>λ</mi><mn>2</mn></msub><mo>,</mo><msub><mi>λ</mi><mn>3</mn></msub><mo>,</mo><msub><mi>λ</mi><mn>4</mn></msub><mo>,</mo><msub><mi>λ</mi><mn>5</mn></msub><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>0.1</mn><mo>,</mo><mn>90</mn><mo>,</mo><mn>16</mn><mi>′</mi><mn>000</mn><mo>,</mo><mi>∞</mi><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">[\lambda_1, \lambda_2, \lambda_3, \lambda_4, \lambda_5] = [0, 0.1, 90, 16'000, \infty]</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><msub><mi>λ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>λ</mi><mn>2</mn></msub><mo>,</mo><msub><mi>λ</mi><mn>3</mn></msub><mo>,</mo><msub><mi>λ</mi><mn>4</mn></msub><mo>,</mo><msub><mi>λ</mi><mn>5</mn></msub><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>0.1</mn><mo>,</mo><mn>90</mn><mo>,</mo><msup><mn>16</mn><mo>′</mo></msup><mn>000</mn><mo>,</mo><mi>∞</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[\lambda_1, \lambda_2, \lambda_3, \lambda_4, \lambda_5] = [0, 0.1, 90, 16'000, \infty]</annotation></semantics></math>
 turned out to be useful. Using <code><a href="../reference/mrbsizeRgrid.html">mrbsizeRgrid()</a></code>, differences
 of smooths at neighboring scales are created. For the surface air
 temperature example, the samples generated with <code><a href="../reference/rmvtDCT.html">rmvtDCT()</a></code>
@@ -406,7 +406,7 @@ three sublists. <code>smMean</code> contains the mean of each difference
 of smooths
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐳</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\boldsymbol{z}_{i}</annotation></semantics></math>
 over all <code>ns = 1000</code> samples from the posterior
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="prefix">|</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">p(\boldsymbol{x}|\boldsymbol{y})</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="prefix">|</mo><mi>𝐲</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">p(\boldsymbol{x}|\boldsymbol{y})</annotation></semantics></math>.
 The lists <code>hpout</code> and <code>ciout</code> are relevant for the
 posterior credibility analysis, which is discussed in detail in the next
 subsection.</p>
@@ -444,7 +444,7 @@ is the mean across the whole map.</p>
 <p>As the detail components
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐳</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\boldsymbol{z}_{i}</annotation></semantics></math>
 are random samples from the posterior distribution
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="prefix">|</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">p(\boldsymbol{x}|\boldsymbol{y})</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="prefix">|</mo><mi>𝐲</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">p(\boldsymbol{x}|\boldsymbol{y})</annotation></semantics></math>,
 a credibility analysis has to be done. The goal is to infer which
 details are truly there and which are only artifacts of random
 variation. Three different methods for posterior credibility analysis
@@ -523,11 +523,10 @@ interpretation of the results does not change.</p>
 <h2 id="example-comparison-to-matlab-software">Example: Comparison to Matlab software<a class="anchor" aria-label="anchor" href="#example-comparison-to-matlab-software"></a>
 </h2>
 <p>The <code>mrbsizeR</code> methodology was first implemented in the
-Matlab program MRBSiZer , which is available at <a href="http://cc.oulu.fi/~lpasanen/MRBSiZer/" class="external-link uri">http://cc.oulu.fi/~lpasanen/MRBSiZer/</a>. In order to
-ensure that the results obtained with R and Matlab are concordant, the
-sketch pad example from the original paper is reconstructed (compare
-Figure . The digital image is of the size 284-by-400 and the prior
-parameters
+Matlab program MRBSiZer . In order to ensure that the results obtained
+with R and Matlab are concordant, the sketch pad example from the
+original paper is reconstructed (compare Figure . The digital image is
+of the size 284-by-400 and the prior parameters
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>λ</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\lambda_{0}</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>σ</mi><mn>0</mn><mn>2</mn></msubsup><annotation encoding="application/x-tex">\sigma_{0}^{2}</annotation></semantics></math>
 and
@@ -538,9 +537,9 @@ and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>10</mn><annotation encoding="application/x-tex">10</annotation></semantics></math>,
 respectively. The set of smoothing levels used in the multiresolution
 analysis was
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>30</mn><mo>,</mo><mn>6</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup><mo>,</mo><mi>∞</mi><mo stretchy="true" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0, 1, 30, 6 \times 10^5, \infty]</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>30</mn><mo>,</mo><mn>6</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup><mo>,</mo><mi>∞</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0, 1, 30, 6 \times 10^5, \infty]</annotation></semantics></math>.
 3000 samples of the posterior
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="prefix">|</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">p(\boldsymbol{x}|\boldsymbol{y})</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="false" form="prefix">|</mo><mi>𝐲</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">p(\boldsymbol{x}|\boldsymbol{y})</annotation></semantics></math>
 were generated.</p>
 <p>The detail components
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐳</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\boldsymbol{z}_{i}</annotation></semantics></math>
@@ -566,9 +565,9 @@ to the analysis of data on a grid, no Bayesian signal reconstruction is
 implemented. To form scale-dependent details, data samples need to be
 available beforehand. The analysis procedure for spherical data can
 therefore be summarized in two steps:</p>
-<p>Data from the Community Climate System Model 4.0 (CCSM4, see <a href="http://www.cesm.ucar.edu/models/ccsm4.0/ccsm/" class="external-link uri">http://www.cesm.ucar.edu/models/ccsm4.0/ccsm/</a>) is used
-to illustrate <code>mrbsizeR</code> on spherical data. CCSM4 is a
-climate model simulating the earth’s climate system, see <span class="citation">Gent et al. (2011)</span>. For this analysis, the
+<p>Data from the Community Climate System Model 4.0 (CCSM4) is used to
+illustrate <code>mrbsizeR</code> on spherical data. CCSM4 is a climate
+model simulating the earth’s climate system, see <span class="citation">Gent et al. (2011)</span>. For this analysis, the
 simulated surface air temperature in June of the years 1870–2100 was
 considered. Instead of using the surface air temperature itself, its
 deviation to the yearly mean has been used. This detrends the data and
@@ -613,9 +612,9 @@ smooths at neighboring scales can be created using the function
 <p> </p>
 <p>For creating the differences of smooths at neighboring scales in
 Figure , the smoothing level sequence
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>λ</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>λ</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>0.0026</mn><mo>,</mo><mi>∞</mi><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">[\lambda_{1}, \dots, \lambda_{3}] = [0, 0.0026, \infty]</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><msub><mi>λ</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>λ</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>0.0026</mn><mo>,</mo><mi>∞</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[\lambda_{1}, \dots, \lambda_{3}] = [0, 0.0026, \infty]</annotation></semantics></math>
 was used. Only one smoothing level was added to the default sequence
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="true" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0, \infty]</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0, \infty]</annotation></semantics></math>.
 This is enough to capture features at all different scales. Whereas
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐳</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\boldsymbol{z}_{1}</annotation></semantics></math>
 shows small-scale details like colder regions in Tibet or Chile,
@@ -719,7 +718,7 @@ Global Organization for Earth System Science Portals.</p>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-erasto2005" class="csl-entry">
 Erästö, Panu, and Lasse Holmström. 2005. <span>“Bayesian Multiscale
 Smoothing for Making Inferences about Features in Scatterplots.”</span>
@@ -727,8 +726,7 @@ Smoothing for Making Inferences about Features in Scatterplots.”</span>
 569–89.
 </div>
 <div id="ref-gent2011" class="csl-entry">
-Gent, Peter R., Gokhan Danabasoglu, Leo J. Donner, Marika M. Holland,
-Elizabeth C. Hunke, Steve R. Jayne, David M. Lawrence, et al. 2011.
+Gent, Peter R., Gokhan Danabasoglu, Leo J. Donner, et al. 2011.
 <span>“The Community Climate System Model Version 4.”</span> <em>Journal
 of Climate</em> 24: 4973–91.
 </div>
